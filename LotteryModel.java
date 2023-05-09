@@ -4,8 +4,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class LotteryModel {
 	
-	int[] lotteryNum = new int[6];
-	int[] luckyNumber = new int[6];
+	private int[] lotteryNum = new int[6];
+	private int[] luckyNumber = new int[6];
 	int checkPay;
 	Scanner scan;
 	
@@ -36,11 +36,10 @@ public class LotteryModel {
 	}
 	
 	public int[] getLotteryNum() {
-		return lotteryNum;
+		return this.lotteryNum;
 	}
 	
 	public void setLuckyNum() {
-	
 		
 		// 로또 번호 6개 자동생성후 어레이에 삽입
 		for (int i = 0; i < 6; i++) {
@@ -54,35 +53,10 @@ public class LotteryModel {
 		
 	}
 	
-	public void setwinnerPickUp() {
-		for (int i = 0, j = 0; i < this.luckyNumber.length; i++) {
-			for (int x = 0; x < this.lotteryNum.length; x++) {
-				if (this.luckyNumber[i] == this.lotteryNum[x]) {
-					i++;
-					System.out.printf("총 번호 %d번 당첨입니다\n", ++j);
-					if (j == 6) {
-						System.out.println("6개 일치 상금 : 2,000,000,000원 (20억)");
-					}
-					else if (j == 5) {
-						System.out.println("5개 일치 + 보너스 볼 상금 : 30,000,000원");
-					}
-					else if (j == 4) {
-						System.out.println("4개 일치 시 상금 : 50,000원");
-					}
-					else if (j == 3) {
-						System.out.println("3개 일치 시 상금 : 5,000원");
-					}
-					else if (j >= 2) {
-						System.out.println("꽝입니다.");
-					}
-					
-				}
-				
-			}
-			
-		}
+	public int[] getLuckyNum() {
+		return this.luckyNumber;
 	}
-
+	
 	
 
 }
