@@ -8,48 +8,72 @@ public class LotteryMVCMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+//		int[] luckyNumber = new int[6];
+//		for (int i = 0; i < 6; i++) {
+//			int randomNum = ThreadLocalRandom.current().nextInt(1, 45 + 1);
+//			luckyNumber[i] = randomNum;
+//		}
+//		// sorting
+//		Arrays.sort(luckyNumber);
+//
+//		System.out.printf("로또 번호는 = %s입니다 %n", Arrays.toString(luckyNumber));
 		Scanner scan = new Scanner(System.in);
 		System.out.println("지불할 금액을 1000원 단위로 입력하세요.");
-	
+
 		int checkPay = scan.nextInt();
 		System.out.println("로또 번호  1 ~ 45를 한 번호씩 6번 입력하세요.");
 		if (checkPay == 1000) {
 
 			int[] lotteryNum = new int[6];
 			for (int i = 0; i < 6; i++) {
+				System.out.printf("%d번째 번호입력: ", i + 1);
 				int inputNumber = scan.nextInt();
 				lotteryNum[i] = inputNumber;
 			}
-			
-			// array sort
-			 int[] luckyNumber = new int[6];
-				for (int i = 0; i < 6; i++) {
-					int randomNum = ThreadLocalRandom.current().nextInt(1, 45 + 1);
-					luckyNumber[i] = randomNum;
-				}
-				String strLuckyNumber = Arrays.toString(luckyNumber);
-//				strLuckyNumber.
-				 System.out.printf("로또 번호는 = %s입니다 %n",strLuckyNumber);
-				 
-				 for (int i = 0; i < 6; i++) {
-					 if (lotteryNum[i] == luckyNumber[i]) {
-						 System.out.println("로또 당첨입니다.");
-					 }
-				 }
-				 
-			 System.out.printf("입력 번호는 = %s입니다 %n\"", Arrays.toString(lotteryNum));
-			 
-		} else {
-			System.out.println("error");
-		}
-		
-	
-			 
-		
-		
-	}
 
+			// array sort
+			int[] luckyNumber = new int[6];
+			for (int i = 0; i < 6; i++) {
+				int randomNum = ThreadLocalRandom.current().nextInt(1, 45 + 1);
+				luckyNumber[i] = randomNum;
+			}
+			// sorting
+			Arrays.sort(luckyNumber);
+
+			System.out.printf("로또 번호는 = %s입니다 %n", Arrays.toString(luckyNumber));
+
+			// sorting
+			Arrays.sort(lotteryNum);
+			System.out.printf("입력 번호는 = %s입니다 %n", Arrays.toString(lotteryNum));
+			
+			for (int i = 0, j = 1; i < luckyNumber.length; i++) {
+				if (luckyNumber[i] == lotteryNum[i]) {
+					
+					System.out.printf("총 번호 %d번 당첨입니다\n", j++);
+					if (i == 6) {
+						System.out.println("6개 일치 상금 : 2,000,000,000원 (20억)");
+					}
+					else if (i == 5) {
+						System.out.println("5개 일치 + 보너스 볼 상금 : 30,000,000원");
+					}
+					else if (i == 4) {
+						System.out.println("4개 일치 시 상금 : 50,000원");
+					}
+					else if (i == 3) {
+						System.out.println("3개 일치 시 상금 : 5,000원");
+					}
+					else if (i >= 2) {
+						System.out.println("꽝입니다.");
+					}
+					
+				}
+			}
+
+		}
+
+	}
 }
+
 //개발 난이도 1단계
 //게임에 적용 시킬 로또 번호 6개를 입력 받는다. 그리고 자동으로 로또 번호를 생성해준다.
 //이어서 게임 시작을 누르면 자동으로 당첨 번호가 생성되고 이후 당첨 통계를 콘솔로 확인할 수 있다.
