@@ -8,31 +8,33 @@ public class LotteryMVCMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		int[] luckyNumber = new int[6];
-//		for (int i = 0; i < 6; i++) {
-//			int randomNum = ThreadLocalRandom.current().nextInt(1, 45 + 1);
-//			luckyNumber[i] = randomNum;
-//		}
-//		// sorting
-//		Arrays.sort(luckyNumber);
-//
-//		System.out.printf("로또 번호는 = %s입니다 %n", Arrays.toString(luckyNumber));
+		
+
+		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("지불할 금액을 1000원 단위로 입력하세요.");
 
 		int checkPay = scan.nextInt();
 		System.out.println("로또 번호  1 ~ 45를 한 번호씩 6번 입력하세요.");
+		
+		// 입력 금액 확인
 		if (checkPay == 1000) {
 
 			int[] lotteryNum = new int[6];
+			
+			// 로또 번호 입력 후 어레이에 삽입
 			for (int i = 0; i < 6; i++) {
 				System.out.printf("%d번째 번호입력: ", i + 1);
 				int inputNumber = scan.nextInt();
 				lotteryNum[i] = inputNumber;
 			}
+			
+			
+			
 
-			// array sort
 			int[] luckyNumber = new int[6];
+			
+			// 로또 번호 6개 자동생성후 어레이에 삽입
 			for (int i = 0; i < 6; i++) {
 				int randomNum = ThreadLocalRandom.current().nextInt(1, 45 + 1);
 				luckyNumber[i] = randomNum;
@@ -41,32 +43,42 @@ public class LotteryMVCMain {
 			Arrays.sort(luckyNumber);
 
 			System.out.printf("로또 번호는 = %s입니다 %n", Arrays.toString(luckyNumber));
+			
+			
+			
+			
 
 			// sorting
 			Arrays.sort(lotteryNum);
 			System.out.printf("입력 번호는 = %s입니다 %n", Arrays.toString(lotteryNum));
 			
-			for (int i = 0, j = 1; i < luckyNumber.length; i++) {
-				if (luckyNumber[i] == lotteryNum[i]) {
-					
-					System.out.printf("총 번호 %d번 당첨입니다\n", j++);
-					if (i == 6) {
-						System.out.println("6개 일치 상금 : 2,000,000,000원 (20억)");
-					}
-					else if (i == 5) {
-						System.out.println("5개 일치 + 보너스 볼 상금 : 30,000,000원");
-					}
-					else if (i == 4) {
-						System.out.println("4개 일치 시 상금 : 50,000원");
-					}
-					else if (i == 3) {
-						System.out.println("3개 일치 시 상금 : 5,000원");
-					}
-					else if (i >= 2) {
-						System.out.println("꽝입니다.");
+			
+			// 당첨 번호 매칭
+			for (int i = 0, j = 0; i < luckyNumber.length; i++) {
+				for (int x = 0; x < lotteryNum.length; x++) {
+					if (luckyNumber[i] == lotteryNum[x]) {
+						i++;
+						System.out.printf("총 번호 %d번 당첨입니다\n", ++j);
+						if (j == 6) {
+							System.out.println("6개 일치 상금 : 2,000,000,000원 (20억)");
+						}
+						else if (j == 5) {
+							System.out.println("5개 일치 + 보너스 볼 상금 : 30,000,000원");
+						}
+						else if (j == 4) {
+							System.out.println("4개 일치 시 상금 : 50,000원");
+						}
+						else if (j == 3) {
+							System.out.println("3개 일치 시 상금 : 5,000원");
+						}
+						else if (j >= 2) {
+							System.out.println("꽝입니다.");
+						}
+						
 					}
 					
 				}
+				
 			}
 
 		}
