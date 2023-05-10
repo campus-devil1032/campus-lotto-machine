@@ -1,9 +1,10 @@
-import java.util.Scanner;
 
 public class LotteryView {
 
 	public void checkPay() {
-		System.out.println("지불할 금액을 1000원 단위로 입력하세요.");
+		StringBuffer intro = new StringBuffer("지불할 금액을 1000원 단위로 입력하세요.");
+		intro.append(" 로또 티켓 한장 정확히 천원");
+		System.out.println(intro);
 	}
 	
 	public void firstPrize() {

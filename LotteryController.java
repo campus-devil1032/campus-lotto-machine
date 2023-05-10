@@ -1,11 +1,12 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class LotteryController {
 	LotteryModel model;
 	LotteryView view;
-	private int[] lotteryNum;
-	private int[] luckyNumber;
+	private ArrayList<Integer> lotteryNum;
+	private ArrayList<Integer> luckyNumber;
 	private Scanner scan;
 	private int checkPay;
 	
@@ -42,42 +43,11 @@ public class LotteryController {
 			model.setScanner();
 			model.setLotteyNum();
 			model.setLuckyNum();
-			
-		if (this.checkPay == 1000) {
-			
-			
-			getForLoop();
-
-		}
+			model.setFoopLoop();
 	}
 	
-	public void getForLoop() {
-		for (int i = 0, j = 0; i < this.luckyNumber.length; i++) {
-			for (int x = 0; x < this.lotteryNum.length; x++) {
-				if (this.luckyNumber[i] == this.lotteryNum[x]) {
-					i++;
-					System.out.printf("총 번호 %d번 당첨입니다\n", ++j);
-					if (j == 6) {
-						view.firstPrize();
-					}
-					else if (j == 5) {
-						view.seceonPrize();
-					}
-					else if (j == 4) {
-						view.thirdPrize();
-					}
-					else if (j == 3) {
-						view.fourthPrize();
-					}
-					else if (j >= 2) {
-						view.lostMoney();
-					}
-					
-				}
-				
-			}
-			
-		}
+	public void setForLoop() {
+		model.setFoopLoop();
 	}
 
 }
