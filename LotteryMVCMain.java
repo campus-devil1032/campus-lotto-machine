@@ -11,11 +11,12 @@ public class LotteryMVCMain {
 		LotteryModel model = new LotteryModel();
 		LotteryView view = new LotteryView();
 		LotteryController controller = new LotteryController(model, view);
-		
+
+		controller.getOperation();
+		controller.getScan();
+
 		controller.getLottryNum();
 		controller.getLuckyNum();
-		controller.getOperation();
-
 		
 	}
 	
