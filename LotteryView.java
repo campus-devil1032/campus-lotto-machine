@@ -1,6 +1,8 @@
 
 public class LotteryView {
 
+
+	
 	public void checkPay() {
 		StringBuffer intro = new StringBuffer("지불할 금액을 1000원 단위로 입력하세요.");
 		intro.append(" 로또 티켓 한장 정확히 천원");
@@ -8,7 +10,8 @@ public class LotteryView {
 	}
 	
 	public void firstPrize() {
-		System.out.println("6개 일치 상금 : 2,000,000,000원 (20억)");
+		StringBuffer firstPrize = new StringBuffer("6개 일치 상금 : 2,000,000,000원 (20억)");
+		System.out.println(firstPrize);
 	}
 	
 	public void seceonPrize() {
@@ -24,6 +27,8 @@ public class LotteryView {
 	}
 	
 	public void lostMoney() {
-		System.out.println("꽝입니다.");
+		StringBuffer lostMoney = new StringBuffer("꽝입니다");
+		lostMoney.append(" 다시 복권 구매해보세요!");
+		System.out.println(lostMoney);
 	}
 }

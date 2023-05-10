@@ -8,11 +8,10 @@ public class LotteryModel {
 
 	private ArrayList<Integer> lotteryNum = new ArrayList<Integer>();
 	private ArrayList<Integer> luckyNumber = new ArrayList<Integer>();
-	int lotteySize = lotteryNum.size();
-	int luckySize = luckyNumber.size();
-	public LotteryView view;
+
+	private LotteryView view;
 	private Scanner scan;
-	public int checkPay;
+	private int checkPay;
 
 
 	public int getScanner() {
@@ -26,11 +25,24 @@ public class LotteryModel {
 		
 		this.checkPay = checkPay;
 		
-		
 	}
+	
+	// 티켓 구매시 천원 이하 에러 표시 
+	public void setCalcticketPrice() {
+		if (checkPay >= 1000) {
+			int dividePay = checkPay / 1000;
+			System.out.println(dividePay);
+			
+		} else {
+			throw new NumberFormatException("돈을 천원 이상 적어주세요.");
+		}
+	
+	}
+	
+
 
 	public void setLotteyNum() {
-//	 if(checkPay == 1000) {
+
 		
 		 for (int i = 0; i < 6; i++) {
 			 System.out.println("로또 번호  1 ~ 45를 한 번호씩 6번 입력하세요.");
@@ -43,12 +55,7 @@ public class LotteryModel {
 				System.out.printf("입력 번호는 = %s입니다 %n", this.lotteryNum.toString());
 			
 			}
-//	 } else {
-//		 System.out.println("정확히 천원만 입력하세요!");
-//		 System.out.println("정확히 천원만 입력하세요!");
-//		 System.out.println("정확히 천원만 입력하세요!");
-//	 }
-		
+
 		
 	}
 
@@ -76,36 +83,13 @@ public class LotteryModel {
 	}
 	
 	
-	public void setFoopLoop() {
-		luckySize = luckyNumber.size();
-		lotteySize = lotteryNum.size();
-		// 
-		for (int i = 0, j = 0; i < lotteySize; i++) {
-			for (int x = 0; x < lotteySize; x++) {
-				if (luckyNumber.indexOf(i) == lotteryNum.indexOf(x)) {
-					i++;
-					System.out.printf("총 번호 %d번 당첨입니다\n", ++j);
-					if (j == 6) {
-						this.view.firstPrize();
-					}
-					else if (j == 5) {
-						this.view.seceonPrize();
-					}
-					else if (j == 4) {
-						this.view.thirdPrize();
-					}
-					else if (j == 3) {
-						this.view.fourthPrize();
-					}
-					else if (j >= 2) {
-						this.view.lostMoney();
-					}
-					
-				}
-				
-			}
-			
-		}
-	}
+
+	
+
+	
+	
+	
+	
+	
 
 }

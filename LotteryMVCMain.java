@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class LotteryMVCMain {
 	int[] lotteryNum;
@@ -12,11 +9,12 @@ public class LotteryMVCMain {
 		LotteryView view = new LotteryView();
 		LotteryController controller = new LotteryController(model, view);
 
-		controller.getOperation();
 		controller.getScan();
-
 		controller.getLottryNum();
 		controller.getLuckyNum();
+		controller.getOperation();
+	
+
 		
 	}
 	
