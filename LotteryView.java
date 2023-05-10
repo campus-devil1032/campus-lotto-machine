@@ -15,7 +15,9 @@ public class LotteryView {
 	}
 	
 	public void seceonPrize() {
-		System.out.println("5개 일치 + 보너스 볼 상금 : 30,000,000원");
+		StringBuffer secondPize = new StringBuffer("5개 일치 + 보너스 볼 상금 : 30,000,000원");
+		secondPize.append(" 축하드립니다!");
+		System.out.println(secondPize);
 	}
 	
 	public void thirdPrize() {
@@ -31,4 +33,29 @@ public class LotteryView {
 		lostMoney.append(" 다시 복권 구매해보세요!");
 		System.out.println(lostMoney);
 	}
+	
+//	public void setCalcPrize(int result) {
+//		
+//		if (result == 6) {
+//		firstPrize();
+//		break;
+//	}
+//	else if (result == 5) {
+//		seceonPrize();
+//		break;
+//	}
+//	else if (result == 4) {
+//		thirdPrize();
+//		break;
+//	}
+//	else if (result == 3) {
+//		fourthPrize();
+//		break;
+//	}
+//	else {
+//		lostMoney();
+//		break;
+//	}
+//		
+//	}
 }

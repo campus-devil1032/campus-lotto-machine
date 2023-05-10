@@ -13,7 +13,7 @@ public class LotteryMVCMain {
 		controller.getLottryNum();
 		controller.getLuckyNum();
 		controller.getOperation();
-	
+		controller.getWinnerSpin();
 
 		
 	}
@@ -21,6 +21,8 @@ public class LotteryMVCMain {
 	
 	
 }
+
+
 
 //개발 난이도 1단계
 //게임에 적용 시킬 로또 번호 6개를 입력 받는다. 그리고 자동으로 로또 번호를 생성해준다.
