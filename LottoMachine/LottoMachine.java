@@ -20,9 +20,17 @@ public class LottoMachine {
         int[][] lottoNumbers = new int[purchasesAmount][lottoNumberSize];
 
         // 로또 번호 생성
+        System.out.println();
         for (int i = 0; i < purchasesCount; i++) {
-            for (int j = 0; j < lottoNumberSize; j++) {
-                lottoNumbers[i][j] = random.nextInt(45) + 1;
+            Set<Integer> set = new HashSet<>();
+            while (set.size() < lottoNumberSize) {
+                int tempNumber = random.nextInt(45) + 1;
+                set.add(tempNumber);
+            }
+            int j = 0;
+            for (int num : set) {
+                lottoNumbers[i][j] = num;
+                j++;
             }
         }
 
@@ -33,6 +41,7 @@ public class LottoMachine {
 
 
         // 당첨번호 만들기
+        System.out.println();
         System.out.println("<당첨번호>");
         int[] winningNumber = new int[6];
 
@@ -50,6 +59,7 @@ public class LottoMachine {
         System.out.println(Arrays.toString(winningNumber));
 
         // 구매번호 배열과 당첨번호 배열을 대조하여 일치하는 숫자 개수 찾기
+        System.out.println();
         for (int i = 0; i < purchasesCount; i++) {
             int matchCount = 0;
             for (int k = 0; k < lottoNumberSize; k++) {
