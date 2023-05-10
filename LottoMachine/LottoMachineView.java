@@ -25,11 +25,13 @@ public class LottoMachineView {
 					if (num < 1 || num > 45) {
 						throw new NumberFormatException();
 					}
+					if (i == 6) {
+						isValidNum = true;
+					}
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("1~45 사이의 정수를 입력하세요 :");
 			}
-			isValidNum = true;
 		}
 		controller.showTable(num);
 	}
