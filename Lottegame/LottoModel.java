@@ -6,10 +6,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class LottoModel {
-	private static int bounsNumber;
+	private static int bounsNumber; //보너스점수는 따로 관리
 
 	// 로또 게임 진행 금액 입력
-	public int gameStartMoney(int money) {// 천원당 1게임
+	public int gameStartMoney(int money) {
+		// 천원당 1게임
 		if (money % 1000 == 0) {
 			return money / 1000;
 		} else {
@@ -19,10 +20,6 @@ public class LottoModel {
 
 	}
 
-	// 수동 VS 자동
-	public int autoOrManual(int total, int manual) {
-		return total - manual;
-	}
 
 	// 로또 난수 생성기 + 보너스는 별도로 빼두기
 	public ArrayList<Integer> lottoAnswerMaker() {
@@ -49,8 +46,7 @@ public class LottoModel {
 		Random rd = new Random();
 		ArrayList<Integer> lottoArray = new ArrayList<Integer>();
 		while (true) {
-			int num = rd.nextInt(45) + 1; // 1~45랜덤 난수 생성
-			// contains은 콜렉션 인터페이스에서 인수가 해당 컬레션에 포함되어있는지 확인하는 메서드
+			int num = rd.nextInt(45) + 1;
 			if (!lottoArray.contains(num)) {
 				lottoArray.add(num);
 			}
@@ -91,7 +87,7 @@ public class LottoModel {
 		return userLottoArray;
 	}
 
-	// 입력 받은 값들이 일치여부(기존 6개만 확인)
+	// 입력 받은 값들이 일치여부
 	public int checkValue(ArrayList<Integer> answer, ArrayList<Integer> userInput) {
 		// arrayList의 get()은 Object로 반환
 		int count = 0;
@@ -124,23 +120,18 @@ public class LottoModel {
 		switch (countNum + bounsNum) {
 		case 3:
 			money = 5000;
-			System.out.println("5등 당첨!!!");
 			break;
 		case 4:
 			money = 50000;
-			System.out.println("4등 당첨!!!");
 			break;
 		case 5:
 			money = 1500000;
-			System.out.println("3등 당첨!!!");
 			break;
 		case -1:
 			money = 30000000;
-			System.out.println("2등 당첨!!!");
 			break;
 		case 6:
 			money = 2000000000;
-			System.out.println("1등 당첨!!!");
 			break;
 		default:
 			break;

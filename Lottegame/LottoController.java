@@ -15,6 +15,7 @@ public class LottoController {
 		int money = sc.nextInt();
 		System.out.println("수동횟수: "); // 나중에 수동횟수가 금액보다 높으면 터트리기
 		int manualTime = sc.nextInt();
+		
 		int total = lottoModel.gameStartMoney(money);
 		int countNum = 0;
 		int prize = 0;
@@ -30,15 +31,17 @@ public class LottoController {
 			countArray[countNum] = lottoModel.checkValue(lottoAnswer, lottoUser);
 			bounsArray[countNum] = lottoModel.checkBouns(lottoAnswer, lottoUser);
 		}
-
+		// 자동값 배열로 받아서 저장 
 		for (; countNum < total; countNum++) {
 			ArrayList<Integer> lottoAi = lottoModel.lottoRandomMaker();
 			countArray[countNum] = lottoModel.checkValue(lottoAnswer, lottoAi);
 			bounsArray[countNum] = lottoModel.checkBouns(lottoAnswer, lottoAi);
 		}
+		// 각 당첨된 개수파악 후 금액 반환
 		for (int i = 0; i < total; i++) {
 			prize += lottoModel.winCount(countArray[i], bounsArray[i]);
 		}
+		System.out.println("총 당첨금액"+prize);
 		return prize;
 	}
 
