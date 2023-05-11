@@ -15,7 +15,9 @@ enum prize {
 public class LottoMachineMain {
 
 	public static void main(String[] args) {
-		levelTwo();
+		while(true) {
+			levelTwo();			
+		}
 	}
 	
 	static void levelOne() {
