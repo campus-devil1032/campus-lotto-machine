@@ -37,7 +37,6 @@ public class LottoMachineMain {
 	static void levelTwo() {
 		System.out.printf("게임수를 입력해주세요 :");
 		ControlString sc = new ControlString();
-		
 		int gameCount = Integer.parseInt(sc.getString());
 		PrizeController pc = new PrizeController(gameCount);
 		
