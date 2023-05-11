@@ -1,4 +1,3 @@
-package LottoMachine;
 
 import java.util.*;
 
@@ -69,5 +68,5 @@ public class LottoMachine {
             }
             System.out.println((i + 1) + "번째 로또번호 일치개수: " + matchCount);
         }
-    }
+     }
 }
