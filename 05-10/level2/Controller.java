@@ -3,7 +3,7 @@ package lotto_machine;
 public class Controller {
 	public static void main(String[] args) {
 		ModelDTO lotteGame = new ModelDTO();
-		lotteGame.setPrint("·Î¶Ç ÇÁ·Î±×·¥ ½ÃÀÛ");
+		lotteGame.setPrint("ë¡œë˜ í”„ë¡œê·¸ë¨ ì‹œì‘");
 		System.out.println(lotteGame.getPrint());
 
 	}

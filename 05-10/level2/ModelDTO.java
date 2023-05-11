@@ -22,7 +22,7 @@ public class ModelDTO {
 		
 
 		public ModelDTO() {
-			//System.out.println("ModelDTO() »ı¼ºÀÚ È£ÃâµÊ!");
+			//System.out.println("ModelDTO() ìƒì„±ì í˜¸ì¶œë¨!");
 			this.total_money = 0;
 			this.number_6 = 0;
 			this.number_5 = 0;
@@ -147,7 +147,7 @@ public class ModelDTO {
 		
 		
 		public String getPrint() {
-			System.out.println("[Á¤»óÃâ·Â] " + print);
+			System.out.println("[ì •ìƒì¶œë ¥] " + print);
 			
 			while (true) {
 				
@@ -155,7 +155,7 @@ public class ModelDTO {
 					selectSwitch();
 						
 				} catch (InputMismatchException e) {
-					System.out.println("Àß¸øµÈ ¹®ÀÚ¸¦ ÀÔ·ÂÇß½À´Ï´Ù!");
+					System.out.println("ì˜ëª»ëœ ë¬¸ìë¥¼ ì…ë ¥í–ˆìŠµë‹ˆë‹¤!");
 					input = new Scanner(System.in);
 				}
 				
@@ -183,10 +183,10 @@ public class ModelDTO {
 				switch(n) {
 			
 					case 1:
-						System.out.println("=====<·Î¶Ç °ÔÀÓ>=====");
+						System.out.println("=====<ë¡œë˜ ê²Œì„>=====");
 						input();
 						
-						System.out.println("=======<´çÃ» ¹øÈ£>=====");
+						System.out.println("=======<ë‹¹ì²­ ë²ˆí˜¸>=====");
 						randGame();
 						gameView();
 						
@@ -195,13 +195,13 @@ public class ModelDTO {
 						Menu();
 						break;
 					case 2:	
-						valueOf();
+						valueOf(); //ë‹¹ì²¨ í†µê³„
 						Menu();
 						break;
 					case 3:
-						System.out.println("¡ØÀÌÀü °ÔÀÓ¿¡ ´ëÇÑ ¼öÀÍ·ü ÀÔ´Ï´Ù.");
-						System.out.println("¡Ø¼öÀÍ·üÀº ´ÙÀ½ °ÔÀÓ ¸¶´Ù ÃÊ±âÈ­ µË´Ï´Ù.");
-						System.out.println("¼öÀÍ·ü: ");
+						System.out.println("â€»ì´ì „ ê²Œì„ì— ëŒ€í•œ ìˆ˜ìµë¥  ì…ë‹ˆë‹¤.");
+						System.out.println("â€»ìˆ˜ìµë¥ ì€ ë‹¤ìŒ ê²Œì„ ë§ˆë‹¤ ì´ˆê¸°í™” ë©ë‹ˆë‹¤.");
+						System.out.println("ìˆ˜ìµë¥ : ");
 						this.total_money += this.number_6*2000000000;
 						this.total_money += this.total_money + (this.number_5*1500000);
 						this.total_money += this.total_money + (this.number_4*50000);
@@ -211,7 +211,7 @@ public class ModelDTO {
 						Menu();
 						break;
 					case 4:
-						System.out.println("°ÔÀÓ ¸®¼Â~!!!");
+						System.out.println("ê²Œì„ ë¦¬ì…‹~!!!");
 						this.number_6 = 0;
 						this.number_5 = 0;
 						this.number_4 = 0;
@@ -220,10 +220,10 @@ public class ModelDTO {
 						break;
 					case 5:
 						input.close();
-						System.out.println("ÇÁ·Î±×·¥À» Á¤»óÀûÀ¸·Î Á¾·á!");
+						System.out.println("í”„ë¡œê·¸ë¨ì„ ì •ìƒì ìœ¼ë¡œ ì¢…ë£Œ!");
 						System.exit(0);
 					default:
-						System.out.println("Àß¸øµÈ ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+						System.out.println("ì˜ëª»ëœ ë¬¸ìë¥¼ ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 						Menu();
 			
 				}
@@ -233,37 +233,37 @@ public class ModelDTO {
 		}
 		
 		public void valueOf() {
-			System.out.println("==========<<´çÃ· ½Ã ±İ¾×>>==========");
-			System.out.println("3°³ ÀÏÄ¡ ½Ã »ó±İ:5,000¿ø");
-			System.out.println("4°³ ÀÏÄ¡ ½Ã »ó±İ:50,000¿ø");
-			System.out.println("5°³ ÀÏÄ¡ ½Ã »ó±İ: 1,500,000¿ø");
-			System.out.println("6°³ ÀÏÄ¡ »ó±İ: 2,000,000,000¿ø (20¾ï)");
+			System.out.println("==========<<ë‹¹ì²¨ ì‹œ ê¸ˆì•¡>>==========");
+			System.out.println("3ê°œ ì¼ì¹˜ ì‹œ ìƒê¸ˆ:5,000ì›");
+			System.out.println("4ê°œ ì¼ì¹˜ ì‹œ ìƒê¸ˆ:50,000ì›");
+			System.out.println("5ê°œ ì¼ì¹˜ ì‹œ ìƒê¸ˆ: 1,500,000ì›");
+			System.out.println("6ê°œ ì¼ì¹˜ ìƒê¸ˆ: 2,000,000,000ì› (20ì–µ)");
 			System.out.println("===============================");
 			
-			System.out.println("¡ØÇÁ·Î±×·¥ÀÌ µ¹¾Æ°¡´Â µ¿¾ÈÀÇ ´çÃ· Åë°èÀÔ´Ï´Ù.");
-			System.out.println("¡Ø°ÔÀÓ ¸Ş´º¿¡¼­ ¸®¼ÂÀÌ °¡´ÉÇÕ´Ï´Ù~!.");
-			System.out.println("´çÃ· Åë°è: ");
-			System.out.println("1µî " + this.number_6 + "¹ø");
-			System.out.println("3µî " + this.number_5 + "¹ø");
-			System.out.println("4µî " + this.number_4 + "¹ø");
-			System.out.println("5µî " + this.number_3 + "¹ø");
+			System.out.println("â€»í”„ë¡œê·¸ë¨ì´ ëŒì•„ê°€ëŠ” ë™ì•ˆì˜ ë‹¹ì²¨ í†µê³„ì…ë‹ˆë‹¤.");
+			System.out.println("â€»ê²Œì„ ë©”ë‰´ì—ì„œ ë¦¬ì…‹ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤~!.");
+			System.out.println("ë‹¹ì²¨ í†µê³„: ");
+			System.out.println("1ë“± " + this.number_6 + "ë²ˆ");
+			System.out.println("3ë“± " + this.number_5 + "ë²ˆ");
+			System.out.println("4ë“± " + this.number_4 + "ë²ˆ");
+			System.out.println("5ë“± " + this.number_3 + "ë²ˆ");
 		}
 		
 		public void Menu() {
-			System.out.println("=========<¸Ş ´º>========");
-			System.out.println("1¹øÀ» ´©¸£¸é ·Î¶Ç°ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
-			System.out.println("2¹øÀ» ´©¸£¸é ´çÃ· Åë°è¸¦ È®ÀÎÇÕ´Ï´Ù.");
-			System.out.println("3¹øÀ» ´©¸£¸é ¼öÀÍ·üÀ» È®ÀÎÇÕ´Ï´Ù.");
-			System.out.println("4¹øÀ» ´©¸£¸é °ÔÀÓ ¸®¼Â ÇÕ´Ï´Ù.");
-			System.out.println("5¹øÀ» ´©¸£¸é ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+			System.out.println("=========<ë©” ë‰´>========");
+			System.out.println("1ë²ˆì„ ëˆ„ë¥´ë©´ ë¡œë˜ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
+			System.out.println("2ë²ˆì„ ëˆ„ë¥´ë©´ ë‹¹ì²¨ í†µê³„ë¥¼ í™•ì¸í•©ë‹ˆë‹¤.");
+			System.out.println("3ë²ˆì„ ëˆ„ë¥´ë©´ ìˆ˜ìµë¥ ì„ í™•ì¸í•©ë‹ˆë‹¤.");
+			System.out.println("4ë²ˆì„ ëˆ„ë¥´ë©´ ê²Œì„ ë¦¬ì…‹ í•©ë‹ˆë‹¤.");
+			System.out.println("5ë²ˆì„ ëˆ„ë¥´ë©´ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 			System.out.println("======================");
-			System.out.println("ÀÔ·Â:");
+			System.out.println("ì…ë ¥:");
 		}
 		
 		
 		public void randGame() {
 		
-			//System.out.println("·Î¶Ç ¹øÈ£ : ");
+			//System.out.println("ë¡œë˜ ë²ˆí˜¸ : ");
 			for (int i = 0; i < this.lotto.length; i++) {
 				int num = (int) (Math.random() * 45) + 1;
 				this.lotto[i] = num;
@@ -287,11 +287,11 @@ public class ModelDTO {
 		
 		
 		public void input() {
-			this.revenue = 0; //¼öÀÍ·ü ´Ù½Ã ÃÊ±âÈ­
+			this.revenue = 0; //ìˆ˜ìµë¥  ë‹¤ì‹œ ì´ˆê¸°í™”
 			
 			while(true) {
 				try {
-					System.out.println("·Î¶Ç °ÔÀÓÀ» ÁøÇàÇÒ ±İ¾×À» ÀÔ·ÂÇØÁÖ¼¼¿ä(·Î¶Ç ÇÑÀå¿¡ 1000¿ø):");
+					System.out.println("ë¡œë˜ ê²Œì„ì„ ì§„í–‰í•  ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”(ë¡œë˜ í•œì¥ì— 1000ì›):");
 					this.money = input.nextInt();
 				
 					if(this.money % 1000 == 0) {
@@ -300,12 +300,12 @@ public class ModelDTO {
 					}
 					
 					else if(this.money % 1000 != 0){
-						System.out.println("±¸¸Å ±İ¾×ÀÌ 1000¿ø ´ÜÀ§°¡ ¾Æ´Õ´Ï´Ù.");
+						System.out.println("êµ¬ë§¤ ê¸ˆì•¡ì´ 1000ì› ë‹¨ìœ„ê°€ ì•„ë‹™ë‹ˆë‹¤.");
 					}
 
 				} catch (InputMismatchException e) {
 					input = new Scanner(System.in);
-					System.out.println("Àß¸øµÈ ÀÔ·Â! ±İ¾×À» Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù!");
+					System.out.println("ì˜ëª»ëœ ì…ë ¥! ê¸ˆì•¡ì„ ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤!");
 				}
 			}
 			
@@ -313,7 +313,7 @@ public class ModelDTO {
 		
 			this.number = new int[this.times][6];
 			
-			System.out.println("ÃÑ" + this.times + "Àå");
+			System.out.println("ì´" + this.times + "ì¥");
 			
 			passivty_Game();
 			passivity_view();
@@ -322,18 +322,18 @@ public class ModelDTO {
 		}
 
 		public void passivty_Game() {
-			//¼öµ¿ °ÔÀÓ
+			//ìˆ˜ë™ ê²Œì„
 			while (true) {
 				try {
 					input = new Scanner(System.in);
 
-					System.out.println("¼öµ¿ ¸î Àå?");
+					System.out.println("ìˆ˜ë™ ëª‡ ì¥?");
 					this.passivity = input.nextInt();
-					System.out.println("¼öµ¿ " + this.passivity + "Àå");
+					System.out.println("ìˆ˜ë™ " + this.passivity + "ì¥");
 					break;
 					// input = new Scanner(System.in);
 				} catch (InputMismatchException e) {
-					System.out.println("Àß¸øµÈ ÀÔ·Â!");
+					System.out.println("ì˜ëª»ëœ ì…ë ¥!");
 				}
 			}
 			passivity_Ex();
@@ -349,7 +349,7 @@ public class ModelDTO {
 				try {
 
 					if (this.passivity > 0) {
-						System.out.println("·Î¶Ç ¹øÈ£ 6°³¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!");
+						System.out.println("ë¡œë˜ ë²ˆí˜¸ 6ê°œë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!");
 					}
 
 					for (int i = 0; i < this.passivity; i++) {
@@ -357,7 +357,7 @@ public class ModelDTO {
 							//this.number[i][j] = (Integer) null;
 							this.number[i][j] = input.nextInt();
 							if(this.number[i][j] > 45 || this.number[i][j] <= 0) {
-								System.out.println("1 ~ 45 »çÀÌÀÇ ¼ıÀÚ¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.");
+								System.out.println("1 ~ 45 ì‚¬ì´ì˜ ìˆ«ìë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 								//input = new Scanner(System.in);
 								count++;
 								break;
@@ -383,7 +383,7 @@ public class ModelDTO {
 			}
 		
 		public void passivity_view() {
-			// ¼öµ¿ ºä
+			// ìˆ˜ë™ ë·°
 			for (int i = 0; i < this.passivity; i++) {
 				System.out.print("[" + (i+1) + "] ");
 				for(int j = 0; j < lotto.length; j++) {
@@ -394,15 +394,15 @@ public class ModelDTO {
 		}
 		
 		public void auto_Game() {
-			//ÀÚµ¿ °ÔÀÓ
+			//ìë™ ê²Œì„
 			this.auto = this.times - this.passivity;
-			System.out.println("ÀÚµ¿ " + this.auto + "Àå");
+			System.out.println("ìë™ " + this.auto + "ì¥");
 		
 			
 		}
 		
 		public void auto_view() {
-			//ÀÚµ¿ ºä
+			//ìë™ ë·°
 			
 			for(int i = 0; i<this.times-this.passivity; i++) {
 				randGame();
@@ -416,7 +416,7 @@ public class ModelDTO {
 		
 		
 		
-		public void compare() {
+		public void compare() { 
 			
 			System.out.println("-----<result>-----");
 			
@@ -426,14 +426,14 @@ public class ModelDTO {
 					count = 1;
 				for(int j = 0; j<lotto.length; j++) {
 					if (this.number[i][j] != this.lotto[j]) {
-						//System.out.println("³«Ã·µÇ¼Ì½À´Ï´Ù!");
+						//System.out.println("ë‚™ì²¨ë˜ì…¨ìŠµë‹ˆë‹¤!");
 						
 						break;
 					}
 					else {
 						if(count == 6) {
 							check = true;
-							System.out.println("[" + (i+1) + "] "+ "´çÃ·µÇ¼Ì½À´Ï´Ù!");
+							System.out.println("[" + (i+1) + "] "+ "ë‹¹ì²¨ë˜ì…¨ìŠµë‹ˆë‹¤!");
 							this.number_6++;
 							//break;
 					}
@@ -458,7 +458,7 @@ public class ModelDTO {
 			
 			
 			if(this.check == false) {
-				System.out.println("ÀüºÎ ²Î!!!");
+				System.out.println("ì „ë¶€ ê½!!!");
 			}
 		}
 		
