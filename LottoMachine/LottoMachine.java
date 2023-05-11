@@ -1,7 +1,8 @@
+package campus_lotto_machine.LottoMachine;
 
 import java.util.*;
 
-public class LottoMachine {
+public class LottoMachine{
 
     public static void main(String[] args) {
         //구매번호 만들기(입력받기)
