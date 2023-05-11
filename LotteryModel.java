@@ -18,6 +18,7 @@ public class LotteryModel {
 		return this.checkPay;
 	}
 
+	// 로또 구매에 지불할 금액 입력
 	public void setScanner() {
 		scan = new Scanner(System.in);
 		int checkPay = scan.nextInt();
@@ -28,7 +29,7 @@ public class LotteryModel {
 	public void setCalcticketPrice() {
 		if (checkPay >= 1000) {
 			int dividePay = checkPay / 1000;
-			System.out.println(dividePay);
+			System.out.printf("로또 티켓은 %d장 구매했습니다.%n",dividePay);
 		} else {
 			throw new NumberFormatException("돈을 천원 이상 적어주세요.");
 		}
@@ -44,7 +45,8 @@ public class LotteryModel {
 			this.lotteryNum.add(inputNumber);
 			Collections.sort(this.lotteryNum);
 			System.out.printf("입력 번호는 = %s입니다 %n", this.lotteryNum.toString());
-			System.out.printf("로또 번호는 = %s입니다 %n", this.luckyNumber.toString());
+			// 로또 번호 미리 파악
+//			System.out.printf("로또 번호는 = %s입니다 %n", this.luckyNumber.toString());
 		}
 	}
 

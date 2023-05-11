@@ -10,7 +10,7 @@ public class LotteryMVCMain {
 		LotteryController controller = new LotteryController(model, view);
 
 		controller.getOperation();
-		controller.setCheckWinner();
+		controller.getCheckWinner();
 
 	}
 
