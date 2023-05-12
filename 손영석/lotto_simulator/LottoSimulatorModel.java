@@ -70,7 +70,6 @@ public class LottoSimulatorModel {
 	// 로또 번호 생성하기
 	public void generateNum() {
 		int randomNum[] = new int[6];
-		int checkNum; // 중복체크용 변수
 		int bonusNum; // 보너스 번호
 
 		// 랜덤번호 생성
@@ -78,10 +77,8 @@ public class LottoSimulatorModel {
 			randomNum[i] = (int) ((Math.random() * 45) + 1); // 1~45 난수생성
 
 			// 여기부터 중복체크
-			checkNum = randomNum[i];
-
 			for (int j = 0; j < i; j++) {
-				if (randomNum[j] == checkNum) {
+				if (randomNum[i] == randomNum[j]) {
 					i--; // 중복 시 한단계 이전으로
 					break;
 				}
@@ -97,10 +94,8 @@ public class LottoSimulatorModel {
 			randomNum[i] = (int) ((Math.random() * 45) + 1); // 1~45 난수생성
 
 			// 여기부터 중복체크
-			checkNum = randomNum[i];
-
 			for (int j = 0; j < i; j++) {
-				if (randomNum[j] == checkNum || randomNum[j] == bonusNum) {
+				if (randomNum[i] == randomNum[j] || randomNum[i] == bonusNum) {
 					i--; // 중복 시 한단계 이전으로
 					break;
 				}
