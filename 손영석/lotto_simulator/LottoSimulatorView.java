@@ -26,5 +26,6 @@ public class LottoSimulatorView {
 		System.out.println("3 : 당첨 번호 확인");
 		System.out.println("4 : 당첨 확인");
 		System.out.println("9 : 메뉴 다시보기");
+		System.out.println("----------");
 	}
 }

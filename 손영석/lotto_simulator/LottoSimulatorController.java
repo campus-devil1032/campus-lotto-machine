@@ -15,6 +15,16 @@ public class LottoSimulatorController {
 		userInput.nextLine();
 		return input;
 	}
+	
+	// 수동입력
+	public void inputUserNum() { // 6개 사욪자 입력값 받아오기
+		System.out.println("1~45 사이의 숫자를 입력하세요.");
+		System.out.println("(메뉴로 돌아가기: 숫자 0)");
+		for (int i = 0; i < 6; i++) {
+			System.out.print((i + 1) + "번 숫자 : ");
+			model.setInputNum(i, getUserInput());
+		}
+	}
 
 	// 수동 자동 선택
 	public void mainMenu() {
@@ -54,9 +64,11 @@ public class LottoSimulatorController {
 
 	// 수동
 	public void manualType() {
-		while (true) {
+		boolean isRunManual = true;
+		
+		while (isRunManual) {
 			try {
-				model.inputUserNum();
+				inputUserNum();
 				model.outputUserNum();
 			} catch (InputMismatchException e) {
 				System.err.println("잘못된 입력입니다. 다시 입력하세요.");
@@ -96,10 +108,11 @@ public class LottoSimulatorController {
 					break;
 
 				case 4: // 당첨 확인
-					System.out.println("일치하는 번호 개수: " + model.checkWinNum());
-					if (model.checkBonusNum() == true) {
+					System.out.println("일치하는 번호 개수: " + model.checkMatch());
+					if (model.checkBonus() == true) {
 						System.out.println("+ 보너스 번호");
 					}
+					
 					break;
 
 				case 9: // 메뉴 다시보기

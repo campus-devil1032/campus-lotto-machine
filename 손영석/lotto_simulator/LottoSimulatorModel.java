@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class LottoSimulatorModel {
 	LottoSimulatorController control = new LottoSimulatorController();
-	
+
 	private int[] inputNum = new int[6]; // 입력값을 담을 배열
 	private int[] randomNum = new int[6]; // 랜덤번호를 담을 배열
 	private int[] lottoNum = new int[6]; // 당첨번호를 담을 배열
@@ -47,16 +47,6 @@ public class LottoSimulatorModel {
 
 	public void setBonusNum(int value) { // 보너스번호 setter
 		bonusNum = value;
-	}
-
-	// 수동입력
-	public void inputUserNum() { // 6개 사욪자 입력값 받아오기
-		System.out.println("1~45 사이의 숫자를 입력하세요.");
-		System.out.println("(메뉴로 돌아가기: 숫자 0)");
-		for (int i = 0; i < 6; i++) {
-			System.out.print((i + 1) + "번 숫자 : ");
-			setInputNum(i, control.getUserInput());
-		}
 	}
 
 	public void outputUserNum() { // 사용자 입력값 출력하기
@@ -126,8 +116,8 @@ public class LottoSimulatorModel {
 	}
 
 	// 당첨 개수 확인
-	public int checkWinNum() {
-		int count = 0; // 일치하는 번호 개수
+	public int checkMatch() {
+		int count = 0; // 매치하는 번호 개수
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				if (getRandomNum(i) == getLottoNum(j)) {
@@ -135,12 +125,11 @@ public class LottoSimulatorModel {
 				}
 			}
 		}
-		// 일치하는 개수 반환
-		return count;
+		return count; // 일치 개수 반환
 	}
 
-	// 보너스 여부 확인
-	public boolean checkBonusNum() {
+	// 보너스 일치 여부 확인
+	public boolean checkBonus() {
 		int count = 0; // 일치 여부
 		for (int i = 0; i < 6; i++) {
 			if (getRandomNum(i) == getBonusNum()) {
@@ -153,5 +142,15 @@ public class LottoSimulatorModel {
 		} else {
 			return false;
 		}
+	}
+	
+	// 등수
+	public String checkRank() {
+		return Rank.getRank(checkMatch(), checkBonus()).getRankName();
+	}
+	
+	// 상금
+	public long checkPrize() {
+		return Rank.getRank(checkMatch(), checkBonus()).getPrize();
 	}
 }
