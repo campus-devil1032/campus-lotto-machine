@@ -3,11 +3,9 @@ package lotteGame;
 import java.util.Scanner;
 
 public class View {
-
-	public static void main(String[] args) {
+	public void gameResultPrint() {
 		while (true) {
 			Scanner sc = new Scanner(System.in);
-
 			int[] a = new int[5];
 			LottoController lotto = new LottoController();
 			a = lotto.startGame();
