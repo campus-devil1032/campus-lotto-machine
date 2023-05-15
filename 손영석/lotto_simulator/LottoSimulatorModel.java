@@ -1,6 +1,5 @@
 package lotto_simulator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LottoSimulatorModel {
@@ -9,8 +8,6 @@ public class LottoSimulatorModel {
 	private int[] myNum = new int[6]; // 내 번호를 담을 배열
 	private int[] lottoNum = new int[6]; // 당첨번호를 담을 배열
 	private int bonusNum; // 보너스 번호를 담을 변수
-	
-	private ArrayList<int[]> lottoList = new ArrayList<>();
 
 	public int getMyNum(int index) {
 		Arrays.sort(myNum);
@@ -82,7 +79,6 @@ public class LottoSimulatorModel {
 			// 자동 번호 저장
 			setMyNum(i, randomNum[i]);
 		}
-		lottoList.add(randomNum);
 	}
 
 	// 당첨 개수 확인
