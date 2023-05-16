@@ -21,14 +21,13 @@ public class LottoModel {
 	private String inputTicketString = "";// 입력받은 로또 갯수
 
 	private double gameTotalReward = 0; // 한게임 전체 수익입니다.
-//arraylist 추가해서 당첨번호 횟수단위로 기록하기
 //이중배열에 대해 공부하고 적용필요하면 하기	
 
-	public void ticketMaker(Player p) throws IOException { // 티켓구매#0
+	public void createTicket(Player player) throws IOException { // 티켓구매#0
 		BufferedReader bfrd = new BufferedReader(new InputStreamReader(System.in));
 		int inputTicketNumber = 0;
 
-		if (p.getPlayerMoney() < 1000) {
+		if (player.getPlayerMoney() < 1000) {
 			System.out.println("한 장 살돈도 없어요. 손님");
 			return;
 		}
@@ -45,25 +44,25 @@ public class LottoModel {
 			}
 		}
 
-		if (p.getPlayerMoney() >= inputTicketNumber * 1000) {
-			p.playerLoseMoney(1000 * inputTicketNumber);
-			p.setPlayerTicketList(LottoModel.getRandomNumber(inputTicketNumber));// 티켓구매부분#1
-			p.setPlayerTicketNumber(inputTicketNumber); // 플레이어 보유티켓갯수 설정
-			System.out.println(p.getPlayerMoney() + "원 남았습니다.");
+		if (player.getPlayerMoney() >= inputTicketNumber * 1000) {
+			player.playerLoseMoney(1000 * inputTicketNumber);
+			player.setPlayerTicketList(LottoModel.getRandomNumber(inputTicketNumber));// 티켓구매부분#1
+			player.setPlayerTicketNumber(inputTicketNumber); // 플레이어 보유티켓갯수 설정
+			System.out.println(player.getPlayerMoney() + "원 남았습니다.");
 		} else {
 			System.out.println("돈이 부족해요.");
 		}
 	}
 
-	public void winnerChecker(Player p) { // 티켓비교#3
+	public void winnerChecker(Player player) { // 티켓비교#3
 		int collectCount = 0;// 일치갯수
 		int specialCollectCount = 0;
 		int[][] playerTicket;
 		int checkerx = 0;
 		int checkery = 0;
-		playerTicket = p.getPlayerTicketList();
+		playerTicket = player.getPlayerTicketList();
 		System.out.println("보유하신 티켓애 대한 로토 당첨확인을 시~~~~~~~~작~~~~~~~~~~~하겠습니다~");
-		for (int i = 0; p.getPlayerTicketNumber() > i; i++) {// 티켓번호
+		for (int i = 0; player.getPlayerTicketNumber() > i; i++) {// 티켓번호
 			for (int j = 0; j < 6; j++) {// 당첨번호리스트
 				for (int k = 0; k < 6; k++) {// 보유티켓 번호리스트
 					checkerx = playerTicket[i][k];
@@ -79,19 +78,15 @@ public class LottoModel {
 			}
 			// 당첨 티켓과 보유 티켓 숫자비교 완료후 일치갯수비교로 상급지급
 			System.out.println(Arrays.toString(playerTicket[i]) + "  " + collectCount + "개 일치");
-			win(p, collectCount, specialCollectCount);// #4 상금 지급
+			win(player, collectCount, specialCollectCount);// #4 상금 지급
 			collectCount = 0;
 			specialCollectCount = 0;
 		}
-		this.gameTotalReward /= (p.getPlayerTicketNumber() * 1000);
+		this.gameTotalReward /= (player.getPlayerTicketNumber() * 1000);
 		System.out.println("수익률 : " + this.gameTotalReward + "배");
 		this.gameTotalReward = 0;
 	}
 
-	// 숫자를 입력받아서 티켓생성
-	/*
-	 * public static int[][] getFixedNumber() { return ; }
-	 */
 
 	// 자동 숫자로 티켓생성
 	public void setWinNumber() {
@@ -130,18 +125,6 @@ public class LottoModel {
 		return lottoNumber;
 	}
 
-	public static int[][] getChoiceNumber(int number) {
-		TreeSet<Integer> set = new TreeSet<Integer>();
-		int[][] lottoNumber = new int[MAXIMUN_TICKET_COUNT][6];
-		int numberCount = 0;
-		String str = "";
-		Scanner sc = new Scanner(System.in);
-		for (int i = 0; i < number; i++) {
-
-		}
-		return lottoNumber;
-	}
-
 	public int[] getWinnerNumber() { // 당첨번호 설정#2
 		TreeSet<Integer> set = new TreeSet<Integer>();
 		Random rnd = new Random();
@@ -174,51 +157,50 @@ public class LottoModel {
 		return lottoNumber;
 	}
 
-	public void win(Player p, int count, int bonuscount) {// #4 상금 지급
+	public void win(Player player, int count, int bonuscount) {// #4 상금 지급
 		// 당첨금 지급 함수 실행
 		// 스위치문활용 collectCount , Special카운터 확인해서 당첨 몇등체크 등수만 입력하면 새로운 함수 호출해서 당첨금 지급하게
 		switch (count) {
 		case 3: {
-			p.playerEarnMoney(COLLECT_NUMBER_THREE_REWARD);
-			this.gameTotalReward += COLLECT_NUMBER_THREE_REWARD;
-			System.out.println("5등 당첨 " + COLLECT_NUMBER_THREE_REWARD + "원 축하드립니다!");
-			p.addReward5();
+			calculate(player,COLLECT_NUMBER_THREE_REWARD,5);
+			player.addReward5();
 			break;
 		}
 		case 4: {
-			p.playerEarnMoney(COLLECT_NUMBER_FOUR_REWARD);
-			this.gameTotalReward += COLLECT_NUMBER_FOUR_REWARD;
-			System.out.println("4등 당첨 " + COLLECT_NUMBER_FOUR_REWARD + "원 축하드립니다!");
-			p.addReward4();
+			calculate(player,COLLECT_NUMBER_FOUR_REWARD,4);
+			player.addReward4();
 			break;
 		}
 		case 5: {
-			if (bonuscount == 0) {
-				p.playerEarnMoney(COLLECT_NUMBER_FIVE_REWARD);
-				this.gameTotalReward += COLLECT_NUMBER_FIVE_REWARD;
-				System.out.println("3등 당첨 " + COLLECT_NUMBER_FIVE_REWARD + "원 축하드립니다!");
-				p.addReward3();
-			} else {
-				p.playerEarnMoney(COLLECT_NUMBER_FIVEANDBONUS_REWARD);
-				this.gameTotalReward += COLLECT_NUMBER_FIVEANDBONUS_REWARD;
-				System.out.println("2등 당첨 " + COLLECT_NUMBER_FIVEANDBONUS_REWARD + "원 축하드립니다!");
-				p.addReward2();
-			}
+			isBonusCollect(player,bonuscount);
 			break;
 		}
 		case 6: {
-			p.playerEarnMoney(COLLECT_NUMBER_SIX_REWARD);
-			this.gameTotalReward += COLLECT_NUMBER_SIX_REWARD;
-			System.out.println("1등 당첨 " + COLLECT_NUMBER_SIX_REWARD + "원 축하드립니다!");
-			p.addReward1();
+			calculate(player,COLLECT_NUMBER_SIX_REWARD,1);
+			player.addReward1();
 		}
 		default: {
 			break;
 		}
 		}
 	}
-
-
+	public void isBonusCollect(Player player,int bonuscount) {
+		if(bonuscount==1) {
+			calculate(player,COLLECT_NUMBER_FIVEANDBONUS_REWARD,2);
+			player.addReward2();
+			return;
+		}
+		calculate(player,COLLECT_NUMBER_FIVE_REWARD,3);
+		player.addReward3();
+		
+	}
+	
+	public void calculate(Player player,int money, int rank) {
+		player.playerEarnMoney(money);
+		this.gameTotalReward += money;
+		System.out.println(rank+"등 당첨 " + money + "원 축하드립니다!");
+	}
+	
 	public static boolean isInteger(String s) {
 		try {
 			Integer.parseInt(s);
@@ -231,4 +213,3 @@ public class LottoModel {
 	}
 
 }
-
