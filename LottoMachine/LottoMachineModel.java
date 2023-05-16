@@ -1,47 +1,88 @@
 package LottoMachine;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.stream.Stream;
 import java.util.Random;
 
 public class LottoMachineModel {
-	private int num;
+	private int[] lottoNum;
+	private int purchase;
+	private int price;
 	
-	public LottoMachineModel(int num) {
-		this.num = num;
+	
+	
+	// 숫자 배열로 변환
+	public int[] strToInt(String[] lottoList) {
+		int[] strToIntLottoList = Stream.of(lottoList)
+				.mapToInt(Integer::parseInt).toArray();
+		return strToIntLottoList;
+	}
+	
+	// 오름차순 정렬
+	public int[] sortArray(int[] lottoNum) {
+		Arrays.sort(lottoNum);
+		return lottoNum;
+	}
+	
+	// 중복값 확인
+	public boolean findDuplicateValue(String[] lottoList) {
+		HashSet<String> setLottoList = new HashSet<>(Arrays.asList(lottoList));
+		String[] deleteDuplicateLottoList = setLottoList.toArray(new String [0]);
+		if (lottoList.length != deleteDuplicateLottoList.length) {
+			System.out.println("※로또 번호가 중복되었습니다※");
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	// 로또 번호 생성
+	public int[] createLottoList() {
+		Random lotto = new Random();
+		int[] lottoList = new int[7];
+
+		for (int i = 0; i < 7; i++) {
+			lottoList[i] = (int)(Math.random()*45)+1;
+		}
+		return lottoList;
+	}
+	
+	// 당첨 번호 매치
+	public int matchLottoList(int[] inputLottoList, int[] outputLottoList) {
+		int count = 0;
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 7; j++) {
+				if (inputLottoList[i] == outputLottoList[j]) {
+					count += 1;
+				}
+			}
+		}
+		return count;
+	}
+	
+	public void setPurchase(int purchase) {
+		this.purchase = purchase;
+	}
+	
+	public int getPurchase() {
+		return purchase;
+	}
+	
+	public void setPrice(int Price) {
+		this.price = Price;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public void setLottoNum(int[] lottoNum) {
+		this.lottoNum = lottoNum;
+	}
+	
+	public int[] getLottoNum() {
+		return lottoNum;
 	}
 
-	// 로또 번호 생성
-	public String createLotto() {
-		Random lotto = new Random();
-		
-		int[] arrLotto = new int[6];
-		StringBuilder printLotto = new StringBuilder();
-		
-		// 로또 번호 생성 및 출력 멘트 배열화
-		for (int i = 0; i < 6; i++) {
-			arrLotto[i] = (int)(Math.random()*45)+1;
-			printLotto.append("로또 번호 ")
-						.append(i+1)		// 번호 순서
-						.append("번 : ")
-						.append(arrLotto[i]) // 로또 번호
-						.append("\n");
-		}
-		return printLotto.toString();
-	}
-	
-	// 입력한 로또 번호 출력
-	// ** 입력 받은 번호 배열화 하기 **
-	public String getInputTable() {
-		StringBuilder inputNum = new StringBuilder();
-		System.out.println("입력한 로또 번호를 확인하세요.");
-		for (int i = 0; i < 6; i++) {
-			inputNum.append("[")
-					.append(num)
-					.append("] ");
-		}
-		return inputNum.toString();
-	}
-	
-	public int getNum() {
-		return num;
-	}
 }
