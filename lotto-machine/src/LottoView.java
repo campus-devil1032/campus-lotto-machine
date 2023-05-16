@@ -12,12 +12,27 @@ public class LottoView {
 
     public int getAmount() {
         System.out.print("로또를 구매할 금액을 입력하세요: ");
-        return scanner.nextInt();
+        while (true){
+            int amount = scanner.nextInt();
+            if (amount % 1000 == 0 && amount>=1000) {
+                return amount;
+            } else {
+                displayErrorMessage("금액은 1000원 단위로 입력해야 합니다. 다시 입력해주세요.");
+            }
+        }
     }
 
-    public int getManualCount() {
+    public int getManualCount(int ticketCount) {
         System.out.print("수동으로 발급할 로또 게임 수를 입력하세요: ");
-        return scanner.nextInt();
+
+        while (true) {
+            int manualCount = scanner.nextInt();
+            if (manualCount <= ticketCount) {
+                return manualCount;
+            } else {
+                displayErrorMessage("수동으로 발급할 로또 게임 수는 총 티켓 수 {"+ticketCount+"개}를 초과할 수 없습니다.");
+            }
+        }
     }
 
     public List<Integer> getManualNumbers() {
@@ -28,9 +43,13 @@ public class LottoView {
             while (true) {
                 System.out.print("번호 " + (i + 1) + ": ");
                 number = scanner.nextInt();
-                if (number >= 1 && number <= 45) {
+                if(numbers.contains(number)){
+                    System.out.println("기존에 입력한 숫자는 입력할 수 없습니다.");
+                }
+                else if (number >= 1 && number <= 45) {
                     break; // 1부터 45 사이의 값이면 반복문 종료
-                } else {
+                }
+                else {
                     System.out.println("1부터 45 사이의 숫자를 입력해주세요.");
                 }
             }

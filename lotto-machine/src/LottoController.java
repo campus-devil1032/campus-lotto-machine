@@ -18,31 +18,13 @@ public class LottoController {
     public void startGame() {
 
         // 금액 입력 받기 (1000원 단위로)
-        int amount;
-        while (true) {
-            amount = view.getAmount();
-            if (amount % 1000 == 0 && amount>=1000) {
-                break;
-            } else {
-                view.displayErrorMessage("금액은 1000원 단위로 입력해야 합니다. 다시 입력해주세요.");
-            }
-        }
-
+        int amount = view.getAmount();
 
         // 로또 티켓 개수 계산
         int ticketCount = amount / 1000;
 
-
         // 수동으로 발급할 로또 게임 수 입력 받기
-        int manualCount;
-        while (true) {
-            manualCount = view.getManualCount();
-            if (manualCount < ticketCount) {
-                break;
-            } else {
-                view.displayErrorMessage("수동으로 발급할 로또 게임 수는 총 티켓 수 {"+ticketCount+"개}를 초과할 수 없습니다.");
-            }
-        }
+        int manualCount = view.getManualCount(ticketCount);
 
 
         // 수동으로 발급할 로또 번호 입력 받기
