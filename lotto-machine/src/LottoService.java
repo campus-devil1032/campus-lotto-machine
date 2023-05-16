@@ -68,7 +68,7 @@ public class LottoService {
 
 
     /**
-     *  로또 티켓과 당첨 번호를 비교하여 일치하는 번호의 개수를 세기
+     * 당첨 번호와 보너스 번호를 고려해서 총 상금을 구하기
      *
      * @param matchCount - 당첨 범호 중 일치하는 번호의 개수
      * @param hasBonusNumber - 보너스 번호 포함 여부
