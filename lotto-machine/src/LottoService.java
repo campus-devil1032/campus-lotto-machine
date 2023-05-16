@@ -13,6 +13,13 @@ public class LottoService {
         this.random = new Random();
     }
 
+
+    /**
+     * 자동으로 발급할 로또 티켓 전체 생성
+     *
+     * @param count - 자동으로 발급할 로또 수
+     * @return 자동 생성된 전체 로또 티켓
+     */
     public List<List<Integer>> generateAutoTickets(int count) {
         List<List<Integer>> tickets = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -23,6 +30,12 @@ public class LottoService {
         return tickets;
     }
 
+
+    /**
+     * 자동으로 생성된 개별 로또 번호를 반환
+     *
+     * @return 자동 생성된 개별 로또 티켓
+     */
     public List<Integer> generateAutoTicket() {
         List<Integer> ticket = new ArrayList<>();
         while (ticket.size() < NUMBER_COUNT) {
@@ -36,6 +49,13 @@ public class LottoService {
     }
 
 
+    /**
+     *  로또 티켓과 당첨 번호를 비교하여 일치하는 번호의 개수를 세기
+     *
+     * @param ticket - 사용자의 로또 티켓
+     * @param winningNumbers - 당첨 번호
+     * @return 일치하는 번호의 개수
+     */
     public int countMatchNumbers(List<Integer> ticket, List<Integer> winningNumbers) {
         int count = 0;
         for (int number : ticket) {
@@ -46,6 +66,14 @@ public class LottoService {
         return count;
     }
 
+
+    /**
+     *  로또 티켓과 당첨 번호를 비교하여 일치하는 번호의 개수를 세기
+     *
+     * @param matchCount - 당첨 범호 중 일치하는 번호의 개수
+     * @param hasBonusNumber - 보너스 번호 포함 여부
+     * @return 총 상금
+     */
     public int calculatePrize(int matchCount, boolean hasBonusNumber) {
         if (matchCount == 3) {
             return 5000;
