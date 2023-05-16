@@ -1,9 +1,9 @@
 public enum LottoPrize {
-    MATCH_3(3, 5000),
+    MATCH_3(5, 5000),
     MATCH_4(4, 50000),
-    MATCH_5(5, 1500000),
-    MATCH_5_PLUS_BONUS(5, 30000000),
-    MATCH_6(6, 2000000000);
+    MATCH_5(3, 1500000),
+    MATCH_5_PLUS_BONUS(2, 30000000),
+    MATCH_6(1, 2000000000);
 
 
     private int rank;
