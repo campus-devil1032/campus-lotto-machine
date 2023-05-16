@@ -1,4 +1,4 @@
-package campus_lotto_machine.LottoMachine;
+package campus_lotto_machine2.LottoMachine;
 
 public class LottoMachineModel {
     // 당첨 번호와 일치하는 개수 계산

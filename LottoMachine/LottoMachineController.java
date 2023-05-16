@@ -1,4 +1,4 @@
-package campus_lotto_machine.LottoMachine;
+package campus_lotto_machine2.LottoMachine;
 
 public class LottoMachineController {
     private LottoMachineModel model;
@@ -10,8 +10,8 @@ public class LottoMachineController {
     }
 
     public void start() {
-        int purchasesAmount = view.getPurchaseAmount();
-        int manualPurchases = view.getManualPurchaseCount();
+        int purchasesAmount = view.getPurchaseAmount(); // 구매금액
+        int manualPurchases = view.getManualPurchaseCount(); //
         int lottoNumberSize = 6;
 
         int purchasesCount = purchasesAmount / 1000;

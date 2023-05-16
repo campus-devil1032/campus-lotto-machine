@@ -1,4 +1,4 @@
-package campus_lotto_machine.LottoMachine;
+package campus_lotto_machine2.LottoMachine;
 
 import java.util.HashSet;
 import java.util.Scanner;

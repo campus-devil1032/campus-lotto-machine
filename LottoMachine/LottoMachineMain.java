@@ -1,4 +1,4 @@
-package campus_lotto_machine.LottoMachine;
+package campus_lotto_machine2.LottoMachine;
 
 public class LottoMachineMain {
     public static void main(String[] args) {
