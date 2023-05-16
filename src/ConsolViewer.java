@@ -1,6 +1,7 @@
+
 public class ConsolViewer {// 뷰어
 
-	public static void menu() {
+	public void menu() {
 		System.out.println("=======================================");
 		System.out.println("1. 로또");
 		System.out.println("2. 당첨 현황");
@@ -8,7 +9,7 @@ public class ConsolViewer {// 뷰어
 		System.out.println("=======================================");
 	}
 
-	public static void viewWin(Player p) {
+	public void viewWin(Player p) {
 		System.out.println("=======================================");
 		System.out.println("1등 : " + p.getReward1());
 		System.out.println("2등 : " + p.getReward2());

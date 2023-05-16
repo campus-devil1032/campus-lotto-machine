@@ -1,9 +1,9 @@
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.TreeSet;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////로토모델
@@ -46,7 +46,7 @@ public class LottoModel {
 
 		if (player.getPlayerMoney() >= inputTicketNumber * 1000) {
 			player.playerLoseMoney(1000 * inputTicketNumber);
-			player.setPlayerTicketList(LottoModel.getRandomNumber(inputTicketNumber));// 티켓구매부분#1
+			player.setPlayerTicketList(this.getRandomNumber(inputTicketNumber));// 티켓구매부분#1
 			player.setPlayerTicketNumber(inputTicketNumber); // 플레이어 보유티켓갯수 설정
 			System.out.println(player.getPlayerMoney() + "원 남았습니다.");
 		} else {
@@ -96,7 +96,7 @@ public class LottoModel {
 	}
 
 	// 티켓구매부분#1
-	public static int[][] getRandomNumber(int number) {
+	public int[][] getRandomNumber(int number) {
 		TreeSet<Integer> set = new TreeSet<Integer>();
 		Random rnd = new Random();
 		int[][] lottoNumber = new int[MAXIMUN_TICKET_COUNT][6];
