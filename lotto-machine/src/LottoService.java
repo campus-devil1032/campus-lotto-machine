@@ -3,13 +3,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class LottoGame {
+public class LottoService {
     public static final int NUMBER_COUNT = 6;
     public static final int MAX_NUMBER = 45;
 
     private Random random;
 
-    public LottoGame() {
+    public LottoService() {
         this.random = new Random();
     }
 

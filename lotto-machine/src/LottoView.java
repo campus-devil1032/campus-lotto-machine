@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,15 +24,14 @@ public class LottoView {
         List<Integer> numbers = new ArrayList<>();
         System.out.println("로또 번호 6개를 입력하세요 (1 ~ 45 사이):");
         for (int i = 0; i < 6; i++) {
-            System.out.print("번호 " + (i + 1) + ": ");
             int number = 0;
             while (true) {
+                System.out.print("번호 " + (i + 1) + ": ");
                 number = scanner.nextInt();
                 if (number >= 1 && number <= 45) {
                     break; // 1부터 45 사이의 값이면 반복문 종료
                 } else {
                     System.out.println("1부터 45 사이의 숫자를 입력해주세요.");
-                    System.out.print("번호 " + (i + 1) + ": ");
                 }
             }
             numbers.add(number);
@@ -67,8 +67,9 @@ public class LottoView {
         System.out.println("===============================");
     }
 
-    public void displayWinningLottos(List<Integer> winningLottos){
-        System.out.println("당첨번호는 : " + winningLottos);
+    public void displayWinningLottos(List<Integer> winningNumbers){
+        Collections.sort(winningNumbers);
+        System.out.println("당첨번호는 : " + winningNumbers);
     }
 
     public void displayBonusNumber(int bonusNumber){
