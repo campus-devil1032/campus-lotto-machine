@@ -25,7 +25,7 @@ public class LottoSimulatorController {
 			model.setMyNum(i, getUserInput());
 		}
 	}
-	
+
 	// 내 번호 출력
 	public void printMyNum() {
 		System.out.println("내 로또 번호는 ");
@@ -117,22 +117,23 @@ public class LottoSimulatorController {
 
 				case 4: // 당첨 확인
 					System.out.println("일치하는 번호 개수: " + model.checkMatch());
-					if (model.checkBonus() == true) {
+					if (model.checkBonus() == true) { // 보너스 번호가 일치할때
 						System.out.println("+ 보너스 번호 일치");
 					}
-					if (model.checkMatch() <= 2) {
+					if (model.checkMatch() <= 2) { // 꽝
 						System.out.println(model.checkRank());
-					} else {
+					}
+					if (model.checkMatch() > 2) { // 당첨
 						System.out.println(model.checkRank() + " 상금은 " + model.checkPrize() + " 원입니다.");
 					}
 					break;
 
-				case 5:	// 여러장 구매
-					view.showMultipleMenu(1);
+				case 5: // 여러장 구매
+					view.showMultiMenu(1);
 					multipleMenu();
 					break;
 
-				case 9:	// 메뉴 다시보기
+				case 9: // 메뉴 다시보기
 					view.showInMenu(1);
 					break;
 
@@ -154,7 +155,6 @@ public class LottoSimulatorController {
 		boolean isRunMenu = true;
 
 		model.generateNum(); // 번호 생성
-		model.generateAutoNum(); // 자동 번호 생성
 		view.showInMenu(2); // 자동 메뉴화면
 
 		while (isRunMenu) {
@@ -183,18 +183,19 @@ public class LottoSimulatorController {
 
 				case 4: // 당첨 확인
 					System.out.println("일치하는 번호 개수: " + model.checkMatch());
-					if (model.checkBonus() == true) {
+					if (model.checkBonus() == true) { // 보너스 번호가 일치할때
 						System.out.println("+ 보너스 번호 일치");
 					}
-					if (model.checkMatch() <= 2) {
+					if (model.checkMatch() <= 2) { // 꽝
 						System.out.println(model.checkRank());
-					} else {
+					}
+					if (model.checkMatch() > 2) { // 당첨
 						System.out.println(model.checkRank() + " 상금은 " + model.checkPrize() + " 원입니다.");
 					}
 					break;
 
 				case 5: // 여러장 구매
-					view.showMultipleMenu(1);
+					view.showMultiMenu(1);
 					multipleMenu();
 					break;
 
@@ -224,15 +225,37 @@ public class LottoSimulatorController {
 				int userSelect = getUserInput();
 				switch (userSelect) {
 
-				case 0:
+				case 0: // 뒤로가기
 					System.out.println("이전 메뉴로 돌아갑니다.");
 					System.out.println("메뉴 확인 : 9");
 					isRunMenu = false;
 					break;
 
-				case 1:
-					view.showMultipleMenu(2);
+				case 1: // 구매 매수 입력 후 번호 생성
+					view.showMultiMenu(2);
+					model.setNumOfPurchases(getUserInput());
+					model.generateMultiNum(model.getNumOfPurchases());
+					view.showMultiMenu(3);
 					break;
+
+				case 2: // 내 번호 출력
+					System.out.println("내 번호:");
+					model.printMyNumList();
+					break;
+
+				case 3: // 당첨 번호 출력
+					printLottoNum();
+					break;
+
+				case 4: // 당첨 확인
+					//System.out.println(model.numOfMatchArrays());
+					break;
+
+				case 5: // 통계
+					break;
+
+				case 9: // 메뉴 다시보기
+					view.showMultiMenu(1);
 				}
 
 			} catch (InputMismatchException e) {

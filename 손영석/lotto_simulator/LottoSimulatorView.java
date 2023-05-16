@@ -39,16 +39,26 @@ public class LottoSimulatorView {
 	}
 
 	// 다중 구매 메뉴
-	public void showMultipleMenu(int index) {
+	public void showMultiMenu(int index) {
 		if (index == 1) {
 			System.out.println("<여러장 구매>");
 			System.out.println("0 : 뒤로가기");
 			System.out.println("1 : 구매 매수 입력");
+			System.out.println("2 : 내 번호 보기");
+			System.out.println("3 : 당첨 번호 보기");
+			System.out.println("4 : 당첨 확인");
+			System.out.println("5 : 통계 보기");
+			System.out.println("9 : 메뉴 다시보기");
 			System.out.println("----------");
 		}
 
 		if (index == 2) {
 			System.out.println("구매할 매수를 입력하세요.");
+		}
+		
+		if (index == 3) {
+			System.out.println("번호가 생성되었습니다.");
+			System.out.println("내 번호 보기 : 2");
 		}
 	}
 
