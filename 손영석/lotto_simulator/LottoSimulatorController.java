@@ -18,8 +18,7 @@ public class LottoSimulatorController {
 
 	// 수동입력
 	public void inputUserNum() { // 6개 사욪자 입력값 받아오기
-		System.out.println("1~45 사이의 숫자를 입력하세요.");
-		System.out.println("(메뉴로 돌아가기: 숫자 0)");
+		view.viewInputMenuMessage();
 		for (int i = 0; i < 6; i++) {
 			System.out.print((i + 1) + "번 숫자 : ");
 			model.setMyNum(i, getUserInput());
@@ -59,7 +58,7 @@ public class LottoSimulatorController {
 				switch (userSelect) {
 
 				case 0: // 종료
-					System.out.println("시뮬레이터를 종료합니다.");
+					view.viewExitMessage();
 					isRunClient = false;
 					break;
 
@@ -72,11 +71,11 @@ public class LottoSimulatorController {
 					break;
 
 				default: // 다른 값 입력 시
-					System.err.println("올바른 번호를 입력해주세요.");
+					view.viewInputErrorMessage();
 					break;
 				}
 			} catch (InputMismatchException e) {
-				System.err.println("올바른 번호를 입력해주세요.");
+				view.viewInputErrorMessage();
 				userInput.nextLine(); // 스캐너 초기화
 				continue;
 			}
@@ -88,8 +87,8 @@ public class LottoSimulatorController {
 
 		boolean isRunMenu = true;
 
-		model.generateNum(); // 번호 생성
-		view.showInMenu(1); // 수동 메뉴화면
+		model.generateLottoNum(); // 번호 생성
+		view.showInnerMenu(1); // 수동 메뉴화면
 
 		while (isRunMenu) {
 			try {
@@ -97,13 +96,13 @@ public class LottoSimulatorController {
 				switch (userSelect) {
 
 				case 0: // 뒤로가기
-					System.out.println("이전 메뉴로 돌아갑니다.");
+					view.viewPreviousMenuMessage();
 					isRunMenu = false;
 					break;
 
 				case 1: // 번호 재생성
-					model.generateNum();
-					System.out.println("번호가 재생성되었습니다.");
+					model.generateLottoNum();
+					view.viewRegenerateMessage();
 					break;
 
 				case 2: // 번호 입력
@@ -116,33 +115,33 @@ public class LottoSimulatorController {
 					break;
 
 				case 4: // 당첨 확인
-					System.out.println("일치하는 번호 개수: " + model.checkMatch());
-					if (model.checkBonus() == true) { // 보너스 번호가 일치할때
+					System.out.println("일치하는 번호 개수: " + model.checkMatchLotto());
+					if (model.checkMatchBonus() == true) { // 보너스 번호가 일치할때
 						System.out.println("+ 보너스 번호 일치");
 					}
-					if (model.checkMatch() <= 2) { // 꽝
+					if (model.checkMatchLotto() <= 2) { // 꽝
 						System.out.println(model.checkRank());
 					}
-					if (model.checkMatch() > 2) { // 당첨
+					if (model.checkMatchLotto() > 2) { // 당첨
 						System.out.println(model.checkRank() + " 상금은 " + model.checkPrize() + " 원입니다.");
 					}
 					break;
 
 				case 5: // 여러장 구매
-					view.showMultiMenu(1);
+					view.showMultiPurchasesMenu(1);
 					multipleMenu();
 					break;
 
 				case 9: // 메뉴 다시보기
-					view.showInMenu(1);
+					view.showInnerMenu(1);
 					break;
 
 				default: // 다른 값 입력 시
-					System.err.println("올바른 번호를 입력해주세요.");
+					view.viewInputErrorMessage();
 					break;
 				}
 			} catch (InputMismatchException e) {
-				System.err.println("올바른 번호를 입력해주세요.");
+				view.viewInputErrorMessage();
 				userInput.nextLine(); // 스캐너 초기화
 				continue;
 			}
@@ -154,8 +153,9 @@ public class LottoSimulatorController {
 
 		boolean isRunMenu = true;
 
-		model.generateNum(); // 번호 생성
-		view.showInMenu(2); // 자동 메뉴화면
+		model.generateLottoNum(); // 번호 생성
+		model.generateAutoNum(); // 내 번호 생성
+		view.showInnerMenu(2); // 자동 메뉴화면
 
 		while (isRunMenu) {
 			try {
@@ -163,14 +163,14 @@ public class LottoSimulatorController {
 				switch (userSelect) {
 
 				case 0: // 뒤로가기
-					System.out.println("이전 메뉴로 돌아갑니다.");
+					view.viewPreviousMenuMessage();
 					isRunMenu = false;
 					break;
 
 				case 1: // 번호 재생성
-					model.generateNum();
+					model.generateLottoNum();
 					model.generateAutoNum();
-					System.out.println("번호가 재생성되었습니다.");
+					view.viewRegenerateMessage();
 					break;
 
 				case 2: // 자동 번호 출력
@@ -182,34 +182,34 @@ public class LottoSimulatorController {
 					break;
 
 				case 4: // 당첨 확인
-					System.out.println("일치하는 번호 개수: " + model.checkMatch());
-					if (model.checkBonus() == true) { // 보너스 번호가 일치할때
+					System.out.println("일치하는 번호 개수: " + model.checkMatchLotto());
+					if (model.checkMatchBonus() == true) { // 보너스 번호가 일치할때
 						System.out.println("+ 보너스 번호 일치");
 					}
-					if (model.checkMatch() <= 2) { // 꽝
+					if (model.checkMatchLotto() <= 2) { // 꽝
 						System.out.println(model.checkRank());
 					}
-					if (model.checkMatch() > 2) { // 당첨
+					if (model.checkMatchLotto() > 2) { // 당첨
 						System.out.println(model.checkRank() + " 상금은 " + model.checkPrize() + " 원입니다.");
 					}
 					break;
 
 				case 5: // 여러장 구매
-					view.showMultiMenu(1);
+					view.showMultiPurchasesMenu(1);
 					multipleMenu();
 					break;
 
 				case 9: // 메뉴 다시보기
-					view.showInMenu(2);
+					view.showInnerMenu(2);
 					break;
 
 				default: // 다른 값 입력 시
-					System.err.println("올바른 번호를 입력해주세요.");
+					view.viewInputErrorMessage();
 					break;
 				}
 
 			} catch (InputMismatchException e) {
-				System.err.println("올바른 번호를 입력해주세요.");
+				view.viewInputErrorMessage();
 				userInput.nextLine();
 				continue;
 			}
@@ -226,20 +226,20 @@ public class LottoSimulatorController {
 				switch (userSelect) {
 
 				case 0: // 뒤로가기
-					System.out.println("이전 메뉴로 돌아갑니다.");
-					System.out.println("메뉴 확인 : 9");
+					view.viewPreviousMenuMessage();
+					view.viewMenuGuideMessage();
 					isRunMenu = false;
 					break;
 
 				case 1: // 구매 매수 입력 후 번호 생성
-					view.showMultiMenu(2);
+					view.showMultiPurchasesMenu(2);
 					model.setNumOfPurchases(getUserInput());
 					model.generateMultiNum(model.getNumOfPurchases());
-					view.showMultiMenu(3);
+					view.showMultiPurchasesMenu(3);
 					break;
 
 				case 2: // 내 번호 출력
-					System.out.println("내 번호:");
+					view.viewMyNumberMessage();
 					model.printMyNumList();
 					break;
 
@@ -248,18 +248,18 @@ public class LottoSimulatorController {
 					break;
 
 				case 4: // 당첨 확인
-					//System.out.println(model.numOfMatchArrays());
+					// System.out.println(model.numOfMatchArrays());
 					break;
 
 				case 5: // 통계
 					break;
 
 				case 9: // 메뉴 다시보기
-					view.showMultiMenu(1);
+					view.showMultiPurchasesMenu(1);
 				}
 
 			} catch (InputMismatchException e) {
-				System.err.println("올바른 번호를 입력해주세요.");
+				view.viewInputErrorMessage();
 				userInput.nextLine();
 				continue;
 			}

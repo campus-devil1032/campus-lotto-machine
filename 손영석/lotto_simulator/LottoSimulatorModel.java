@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LottoSimulatorModel {
-	LottoSimulatorController control = new LottoSimulatorController();
 
 	private int[] myNum = new int[6]; // 내 번호를 담을 배열
 	private int[] lottoNum = new int[6]; // 당첨번호를 담을 배열
@@ -61,7 +60,7 @@ public class LottoSimulatorModel {
 	}
 
 	// 로또 번호 생성하기
-	public void generateNum() {
+	public void generateLottoNum() {
 		int randomNum[] = new int[6];
 		int bonusNum; // 보너스 번호
 
@@ -119,7 +118,7 @@ public class LottoSimulatorModel {
 	}
 
 	// 당첨 개수 확인
-	public int checkMatch() {
+	public int checkMatchLotto() {
 		int count = 0; // 매치하는 번호 개수
 
 		for (int i = 0; i < myNum.length; i++) {
@@ -135,19 +134,19 @@ public class LottoSimulatorModel {
 	// 다중 구매 시 당첨 개수 확인
 	public int multiCheckMatch(int index) {
 		int count = 0;
-			int[] myNumArray = myNumList.get(index);
-			for (int i = 0; i < myNum.length; i++) {
-				for (int j = 0; j < myNum.length; j++) {
-					if (myNumArray[i] == getLottoNum(j)) {
-						count++;
-					}
+		int[] myNumArray = myNumList.get(index);
+		for (int i = 0; i < myNum.length; i++) {
+			for (int j = 0; j < myNum.length; j++) {
+				if (myNumArray[i] == getLottoNum(j)) {
+					count++;
 				}
 			}
+		}
 		return count;
 	}
 
 	// 보너스 일치 여부 확인
-	public boolean checkBonus() {
+	public boolean checkMatchBonus() {
 		int count = 0; // 일치 여부
 		for (int i = 0; i < 6; i++) {
 			if (getMyNum(i) == getBonusNum()) {
@@ -163,11 +162,11 @@ public class LottoSimulatorModel {
 
 	// 등수
 	public String checkRank() {
-		return Rank.getRank(checkMatch(), checkBonus()).getRankName();
+		return Rank.getRank(checkMatchLotto(), checkMatchBonus()).getRankName();
 	}
 
 	// 상금
 	public long checkPrize() {
-		return Rank.getRank(checkMatch(), checkBonus()).getPrize();
+		return Rank.getRank(checkMatchLotto(), checkMatchBonus()).getPrize();
 	}
 }

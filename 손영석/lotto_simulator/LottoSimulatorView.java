@@ -1,8 +1,15 @@
 package lotto_simulator;
 
 public class LottoSimulatorView {
-	LottoSimulatorController control = new LottoSimulatorController();
 
+	public void printMessage(String message) {
+		System.out.println(message);
+	}
+	
+	public void printMessage() {
+		System.out.println("");
+	}
+	
 	// 메인메뉴
 	public void showMainMenu() {
 		System.out.println("<로또 시뮬레이터>");
@@ -13,7 +20,7 @@ public class LottoSimulatorView {
 	}
 
 	// 자동 메뉴
-	public void showInMenu(int index) {
+	public void showInnerMenu(int index) {
 		if (index == 1) { // 수동메뉴
 			System.out.println("<수 동 메 뉴>");
 			System.out.println("0 : 뒤로가기");
@@ -39,7 +46,7 @@ public class LottoSimulatorView {
 	}
 
 	// 다중 구매 메뉴
-	public void showMultiMenu(int index) {
+	public void showMultiPurchasesMenu(int index) {
 		if (index == 1) {
 			System.out.println("<여러장 구매>");
 			System.out.println("0 : 뒤로가기");
@@ -55,11 +62,39 @@ public class LottoSimulatorView {
 		if (index == 2) {
 			System.out.println("구매할 매수를 입력하세요.");
 		}
-		
+
 		if (index == 3) {
 			System.out.println("번호가 생성되었습니다.");
 			System.out.println("내 번호 보기 : 2");
 		}
 	}
 
+	public void viewInputMenuMessage() {
+		printMessage("1~45 사이의 숫자를 입력하세요.");
+	}
+
+
+	public void viewExitMessage() {
+		printMessage("시뮬레이터를 종료합니다.");
+	}
+
+	public void viewPreviousMenuMessage() {
+		printMessage("이전 메뉴로 돌아갑니다.");
+	}
+
+	public void viewRegenerateMessage() {
+		printMessage("번호가 재생성되었습니다.");
+	}
+
+	public void viewMyNumberMessage() {
+		printMessage("내 번호:");
+	}
+
+	public void viewMenuGuideMessage() {
+		printMessage("메뉴 확인 : 9");
+	}
+
+	public void viewInputErrorMessage() {
+		System.err.println("올바른 번호를 입력해주세요.");
+	}
 }
