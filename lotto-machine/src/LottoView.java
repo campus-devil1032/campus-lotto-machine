@@ -95,8 +95,14 @@ public class LottoView {
         System.out.println("보너스 번호는 : " + bonusNumber);
     }
 
-    public void displayPrize(int prize) {
-        System.out.println("상금은 : " + prize);
+    public static void displayPrize(LottoPrize prize) {
+        System.out.println(prize.getRank() + "등에 당첨되셨습니다! " + "상금 " + prize.getPrizeAmount() + "원을 획득하셨습니다.");
+
+    }
+
+    public void displayTotalPrize(int prize) {
+        System.out.println("===============================");
+        System.out.println("총 상금은 " + prize + "원 입니다!");
     }
 }
 

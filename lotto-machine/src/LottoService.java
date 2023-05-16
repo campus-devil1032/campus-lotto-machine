@@ -50,9 +50,9 @@ public class LottoService {
 
 
     /**
-     *  로또 티켓과 당첨 번호를 비교하여 일치하는 번호의 개수를 세기
+     * 로또 티켓과 당첨 번호를 비교하여 일치하는 번호의 개수를 세기
      *
-     * @param ticket - 사용자의 로또 티켓
+     * @param ticket         - 사용자의 로또 티켓
      * @param winningNumbers - 당첨 번호
      * @return 일치하는 번호의 개수
      */
@@ -70,11 +70,13 @@ public class LottoService {
     /**
      * 당첨 번호와 보너스 번호를 고려해서 총 상금을 구하기
      *
-     * @param matchCount - 당첨 범호 중 일치하는 번호의 개수
+     * @param matchCount     - 당첨 범호 중 일치하는 번호의 개수
      * @param hasBonusNumber - 보너스 번호 포함 여부
      * @return 총 상금
      */
     public int calculatePrize(int matchCount, boolean hasBonusNumber) {
+        // 당첨 결과 공지
+
         if (matchCount == 3) {
             return 5000;
         } else if (matchCount == 4) {
@@ -90,5 +92,7 @@ public class LottoService {
         } else {
             return 0;
         }
+
+
     }
 }

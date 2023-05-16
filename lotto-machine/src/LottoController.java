@@ -68,10 +68,14 @@ public class LottoController {
             for (List<Integer> ticket : allTickets) {
                 int matchCount = service.countMatchNumbers(ticket, winningNumbers);
                 boolean hasBonusNumber = ticket.contains(bonusNumber);
+                // 당첨 결과 공지
+                LottoPrize.valueOf(matchCount, hasBonusNumber);
+
+                // prize 구하기
                 int prize = service.calculatePrize(matchCount, hasBonusNumber);
                 totalPrize += prize;
             }
-            view.displayPrize(totalPrize);
+            view.displayTotalPrize(totalPrize);
 
             // 수익률 계산
             int totalAmount = allTickets.size() * 1000;
