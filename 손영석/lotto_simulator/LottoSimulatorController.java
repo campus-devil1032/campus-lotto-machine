@@ -1,5 +1,6 @@
 package lotto_simulator;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -36,6 +37,14 @@ public class LottoSimulatorController {
 
 	public int getBonusNum() {
 		return model.getBonusNum();
+	}
+
+	public ArrayList<int[]> getMyNumList() {
+		return model.getMyNumList();
+	}
+
+	public int multiCheckMatch(int index) {
+		return model.multiCheckMatch(index);
 	}
 	// 여기까지
 
@@ -233,7 +242,7 @@ public class LottoSimulatorController {
 
 				case 2: // 내 번호 출력
 					view.viewMyNumberMessage();
-					model.printMyNumList();
+					view.printMyNumList();
 					break;
 
 				case 3: // 당첨 번호 출력
@@ -241,7 +250,7 @@ public class LottoSimulatorController {
 					break;
 
 				case 4: // 당첨 확인
-					// System.out.println(model.numOfMatchArrays());
+					System.out.println("당첨 복권 개수 : " + model.multiCheckCountOfMatch());
 					break;
 
 				case 5: // 통계

@@ -1,16 +1,18 @@
 package lotto_simulator;
 
+import java.util.ArrayList;
+
 public class LottoSimulatorView {
 	static LottoSimulatorController controller = new LottoSimulatorController();
 
 	public void printMessage(String message) {
 		System.out.println("[LOTTO]" + message);
 	}
-	
+
 	public void printMessage() {
 		System.out.println("");
 	}
-	
+
 	// 메인메뉴
 	public void showMainMenu() {
 		System.out.println("<로또 시뮬레이터>");
@@ -74,7 +76,6 @@ public class LottoSimulatorView {
 		printMessage("1~45 사이의 숫자를 입력하세요.");
 	}
 
-
 	public void viewExitMessage() {
 		printMessage("시뮬레이터를 종료합니다.");
 	}
@@ -114,7 +115,27 @@ public class LottoSimulatorView {
 		for (int i = 0; i < 6; i++) {
 			System.out.print(controller.getLottoNum(i) + " ");
 		}
-		System.out.print("+ 보너스 " + controller.getBonusNum());
+		System.out.print("+ 보너스 " + controller.getBonusNum() + " ");
 		System.out.println("]\n입니다.");
+	}
+
+	public void printMyNumList() { // 저장된 리스트 일괄 출력
+		ArrayList<int[]> myNumList = controller.getMyNumList();
+
+		for (int i = 0; i < myNumList.size(); i++) {
+			int[] myNumArray = myNumList.get(i);
+			System.out.print("[ ");
+
+			for (int j = 0; j < myNumArray.length; j++) {
+				int num = myNumArray[j];
+				System.out.print(num + " ");
+			}
+			if (controller.multiCheckMatch(i) < 3) {
+				System.out.println("] ");
+			}
+			if (controller.multiCheckMatch(i) >= 3) {
+				System.out.println("] => 당첨! " + controller.multiCheckMatch(i) + " 개 일치!");
+			}
+		}
 	}
 }

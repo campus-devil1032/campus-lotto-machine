@@ -12,14 +12,8 @@ public class LottoSimulatorModel {
 
 	ArrayList<int[]> myNumList = new ArrayList<>(); // 내 번호를 담을 ArrayList
 
-	public void printMyNumList() { // 저장된 리스트 일괄 출력
-		for (int[] myNumArray : myNumList) {
-			System.out.print("[ ");
-			for (int num : myNumArray) {
-				System.out.print(num + " ");
-			}
-			System.out.println("]");
-		}
+	public ArrayList<int[]> getMyNumList() {
+		return myNumList;
 	}
 
 	public int getMyNum(int index) {
@@ -131,15 +125,26 @@ public class LottoSimulatorModel {
 		return count; // 일치 개수 반환
 	}
 
-	// 다중 구매 시 당첨 개수 확인
+	// 다중 구매 시 일치하는 개수 확인
 	public int multiCheckMatch(int index) {
 		int count = 0;
-		int[] myNumArray = myNumList.get(index);
-		for (int i = 0; i < myNum.length; i++) {
-			for (int j = 0; j < myNum.length; j++) {
+		int[] myNumArray = getMyNumList().get(index);
+		for (int i = 0; i < myNumArray.length; i++) {
+			for (int j = 0; j < myNumArray.length; j++) {
 				if (myNumArray[i] == getLottoNum(j)) {
 					count++;
 				}
+			}
+		}
+		return count;
+	}
+
+	// 다중 구매 시 당첨 복권 개수 확인
+	public int multiCheckCountOfMatch() {
+		int count = 0;
+		for (int i = 0; i < getMyNumList().size(); i++) {
+			if (multiCheckMatch(i) >= 3) {
+				count++;
 			}
 		}
 		return count;
