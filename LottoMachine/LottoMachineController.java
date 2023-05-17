@@ -10,31 +10,31 @@ public class LottoMachineController {
     }
 
     public void start() {
-        int purchasesAmount = view.getPurchaseAmount(); // 구매금액
-        int manualPurchases = view.getManualPurchaseCount(); //
-        int lottoNumberSize = 6;
+        int purchasesAmount = view.getPurchaseAmount(); // 총 구매금액
+        int manualPurchases = view.getManualPurchaseCount(); // 수동 구매숫자
+        int lottoNumberSize = model.getLottoNumberSize(); // 로또 6자리
 
-        int purchasesCount = purchasesAmount / 1000;
-        int autoPurchases = purchasesCount - manualPurchases;
+        int purchasesCount = purchasesAmount / 1000; // 총 구매숫자
+        int autoPurchases = purchasesCount - manualPurchases; // 자동 구매숫자
 
         int[][] manualLottoNumbers = view.generateManualLottoNumbers(manualPurchases, lottoNumberSize);
-        view.displayManualLottoNumbers(manualLottoNumbers);
+        view.displayManualLottoNumbers(manualLottoNumbers); // 수동번호 출력
 
         int[][] autoLottoNumbers = model.generateAutoLottoNumbers(autoPurchases, lottoNumberSize);
-        view.displayAutoLottoNumbers(autoLottoNumbers);
+        view.displayAutoLottoNumbers(autoLottoNumbers); // 자동번호 출력
 
         int[] winningNumber = model.generateWinningNumber();
-        view.displayWinningNumber(winningNumber);
+        view.displayWinningNumber(winningNumber); // 당첨번호 출력
 
 
-        int winningAmount = 0;
+        int winningAmount = model.getWinningAmount(); // 총 당첨금
 
         // 수동 로또 일치 개수 출력
         for (int i = 0; i < manualPurchases; i++) {
             int matchCount = model.calculateMatchCount(manualLottoNumbers[i], winningNumber);
             view.displayMatchCount(matchCount, "(수동)", i);
             int amount = model.calculatePrize(matchCount);
-            winningAmount  += amount;
+            winningAmount += amount; // 당첨금액있을 시 총 당첨금에 추가
         }
 
         // 자동 로또 일치 개수 출력
@@ -42,10 +42,11 @@ public class LottoMachineController {
             int matchCount = model.calculateMatchCount(autoLottoNumbers[i], winningNumber);
             view.displayMatchCount(matchCount, "(자동)", i);
             int amount = model.calculatePrize(matchCount);
-            winningAmount  += amount;
+            winningAmount += amount; // 당첨금액있을 시 총 당첨금에 추가
         }
 
-        double rateOfReturn = (double) winningAmount / purchasesAmount * 100;
+        // 수익률 계산 및 출력
+        double rateOfReturn = model.calculateRateOfReturn(purchasesAmount, winningAmount);
         view.displayRateOfReturn(rateOfReturn);
     }
 }

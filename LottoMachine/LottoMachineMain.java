@@ -7,6 +7,5 @@ public class LottoMachineMain {
         LottoMachineController controller = new LottoMachineController(model, view);
 
         controller.start();
-
     }
 }

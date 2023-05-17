@@ -5,6 +5,16 @@ import java.util.Set;
 
 public class LottoMachineModel {
     private int matchCount;
+    private int lottoNumberSize;
+    private int winningAmount;
+
+    public int getLottoNumberSize() {
+        return lottoNumberSize = 6;
+    }
+
+    public int getWinningAmount() {
+        return winningAmount = 0;
+    }
 
     // 당첨 번호와 일치하는 개수 계산
     public int calculateMatchCount(int[] lottoNumbers, int[] winningNumbers) {
