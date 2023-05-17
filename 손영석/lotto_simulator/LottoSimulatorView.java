@@ -1,9 +1,10 @@
 package lotto_simulator;
 
 public class LottoSimulatorView {
+	static LottoSimulatorController controller = new LottoSimulatorController();
 
 	public void printMessage(String message) {
-		System.out.println(message);
+		System.out.println("[LOTTO]" + message);
 	}
 	
 	public void printMessage() {
@@ -96,5 +97,24 @@ public class LottoSimulatorView {
 
 	public void viewInputErrorMessage() {
 		System.err.println("올바른 번호를 입력해주세요.");
+	}
+
+	public void printMyNum() {
+		System.out.println("내 로또 번호는 ");
+		System.out.print("[ ");
+		for (int i = 0; i < 6; i++) {
+			System.out.print(controller.getMyNum(i) + " ");
+		}
+		System.out.println("]\n입니다.");
+	}
+
+	public void printLottoNum() {
+		System.out.println("당첨 번호는 ");
+		System.out.print("[ ");
+		for (int i = 0; i < 6; i++) {
+			System.out.print(controller.getLottoNum(i) + " ");
+		}
+		System.out.print("+ 보너스 " + controller.getBonusNum());
+		System.out.println("]\n입니다.");
 	}
 }

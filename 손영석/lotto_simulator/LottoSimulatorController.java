@@ -25,26 +25,19 @@ public class LottoSimulatorController {
 		}
 	}
 
-	// 내 번호 출력
-	public void printMyNum() {
-		System.out.println("내 로또 번호는 ");
-		System.out.print("[ ");
-		for (int i = 0; i < 6; i++) {
-			System.out.print(model.getMyNum(i) + " ");
-		}
-		System.out.println("]\n입니다.");
+	// view로 전달할 model 인자들
+	public int getMyNum(int index) {
+		return model.getMyNum(index);
 	}
 
-	// 당첨 번호 출력
-	public void printLottoNum() { // 당첨 번호 출력
-		System.out.println("당첨 번호는 ");
-		System.out.print("[ ");
-		for (int i = 0; i < 6; i++) {
-			System.out.print(model.getLottoNum(i) + " ");
-		}
-		System.out.print("+ 보너스 " + model.getBonusNum());
-		System.out.println("]\n입니다.");
+	public int getLottoNum(int index) {
+		return model.getLottoNum(index);
 	}
+
+	public int getBonusNum() {
+		return model.getBonusNum();
+	}
+	// 여기까지
 
 	// 수동 자동 선택
 	public void mainMenu() {
@@ -107,11 +100,11 @@ public class LottoSimulatorController {
 
 				case 2: // 번호 입력
 					inputUserNum();
-					printMyNum();
+					view.printMyNum();
 					break;
 
 				case 3: // 당첨 번호 확인
-					printLottoNum();
+					view.printLottoNum();
 					break;
 
 				case 4: // 당첨 확인
@@ -174,11 +167,11 @@ public class LottoSimulatorController {
 					break;
 
 				case 2: // 자동 번호 출력
-					printMyNum();
+					view.printMyNum();
 					break;
 
 				case 3: // 당첨 번호 출력
-					printLottoNum();
+					view.printLottoNum();
 					break;
 
 				case 4: // 당첨 확인
@@ -244,7 +237,7 @@ public class LottoSimulatorController {
 					break;
 
 				case 3: // 당첨 번호 출력
-					printLottoNum();
+					view.printLottoNum();
 					break;
 
 				case 4: // 당첨 확인
