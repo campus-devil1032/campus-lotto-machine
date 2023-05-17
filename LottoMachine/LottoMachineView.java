@@ -70,7 +70,7 @@ public class LottoMachineView {
                 return false;
             }
         }
-        return set.size() == numbers.length;
+        return true;
     }
 
     // 수동번호 출력
@@ -96,5 +96,11 @@ public class LottoMachineView {
     // 일치개수 출력
     public void displayMatchCount(int matchCount, String type, int index) {
         System.out.println(type + (index + 1) + "번째 로또번호 일치개수: " + matchCount);
+    }
+
+    // 수익률 출력
+    public void displayRateOfReturn(double rateOfReturn) {
+        System.out.println();
+        System.out.println("수익률: " + rateOfReturn + "%");
     }
 }

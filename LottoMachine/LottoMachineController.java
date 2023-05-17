@@ -26,16 +26,26 @@ public class LottoMachineController {
         int[] winningNumber = model.generateWinningNumber();
         view.displayWinningNumber(winningNumber);
 
+
+        int winningAmount = 0;
+
         // 수동 로또 일치 개수 출력
         for (int i = 0; i < manualPurchases; i++) {
             int matchCount = model.calculateMatchCount(manualLottoNumbers[i], winningNumber);
             view.displayMatchCount(matchCount, "(수동)", i);
+            int amount = model.calculatePrize(matchCount);
+            winningAmount  += amount;
         }
 
         // 자동 로또 일치 개수 출력
         for (int i = 0; i < autoPurchases; i++) {
             int matchCount = model.calculateMatchCount(autoLottoNumbers[i], winningNumber);
             view.displayMatchCount(matchCount, "(자동)", i);
+            int amount = model.calculatePrize(matchCount);
+            winningAmount  += amount;
         }
+
+        double rateOfReturn = (double) winningAmount / purchasesAmount * 100;
+        view.displayRateOfReturn(rateOfReturn);
     }
 }

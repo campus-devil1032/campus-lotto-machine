@@ -1,9 +1,14 @@
 package campus_lotto_machine2.LottoMachine;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LottoMachineModel {
+    private int matchCount;
+
     // 당첨 번호와 일치하는 개수 계산
     public int calculateMatchCount(int[] lottoNumbers, int[] winningNumbers) {
-        int matchCount = 0;
+        matchCount = 0;
         for (int lottoNumber : lottoNumbers) {
             for (int winningNumber : winningNumbers) {
                 if (lottoNumber == winningNumber) {
@@ -20,11 +25,17 @@ public class LottoMachineModel {
         int[][] autoLottoNumbers = new int[autoPurchases][lottoNumberSize];
 
         for (int i = 0; i < autoPurchases; i++) {
-            for (int j = 0; j < lottoNumberSize; j++) {
-                autoLottoNumbers[i][j] = (int) (Math.random() * 45) + 1;
+            Set<Integer> set = new HashSet<>();
+            for (int j = 0; j < lottoNumberSize; ) {
+                int randomNumber = (int) (Math.random() * 45) + 1;
+
+                if (!set.contains(randomNumber)) {
+                    set.add(randomNumber);
+                    autoLottoNumbers[i][j] = randomNumber;
+                    j++;
+                }
             }
         }
-
         return autoLottoNumbers;
     }
 
@@ -37,4 +48,27 @@ public class LottoMachineModel {
         }
         return winningNumber;
     }
+
+    public int calculatePrize(int matchCount) {
+        int winningAmount = 0;
+        if (matchCount == 3) {
+            winningAmount = 5000;
+        } else if (matchCount == 4) {
+            winningAmount = 50000;
+        } else if (matchCount == 5) {
+            winningAmount = 2000000;
+        } else if (matchCount == 6) {
+            winningAmount = 1000000000;
+        }
+        return winningAmount;
+    }
+
+    // 수익률 계산
+    public double calculateRateOfReturn(int purchasesAmount, int totalPrize) {
+        double rateOfReturn = ((double) totalPrize / purchasesAmount) * 100;
+        return rateOfReturn;
+    }
 }
+
+
+
