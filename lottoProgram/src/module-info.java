@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author jsh
+ *
+ */
+module lottoProgram {
+}
