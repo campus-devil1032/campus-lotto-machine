@@ -9,11 +9,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.TreeSet;
 
 public class UserInputRouter {
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private LottoView lottoView = new LottoView();
 
+    /**
+     * 사용자 로또 금액 입력 및 검증 로직
+     * @return
+     * @throws IOException
+     * @throws LackOfMoneyException
+     * @throws IllegalMoneyException
+     */
     public int getUserMoney() throws IOException, LackOfMoneyException, IllegalMoneyException {
         System.out.println("---------------------------------");
         System.out.println("로또를 진행할 금액을 입력해 주세요");
@@ -25,7 +33,7 @@ public class UserInputRouter {
             throw new NumberFormatException();
         }
 
-        int money = Integer.parseInt(userInput);
+        int money = getParseIntByUser(userInput);
 
         // money < 1000
         if (money < 1000) {
@@ -40,6 +48,8 @@ public class UserInputRouter {
         return money;
     }
 
+
+
     public int getUserManualLottoCount() throws IOException {
         System.out.println("수동 로또 갯수를 입력해주세요. 0개면 0을 입력해 주세요.");
         String userInput = br.readLine();
@@ -48,11 +58,11 @@ public class UserInputRouter {
             throw new NumberFormatException();
         }
 
-        return Integer.parseInt(userInput);
+        return getParseIntByUser(userInput);
     }
 
     public MainMenu getMainMenu() throws IOException {
-        lottoView.showMainMenu();
+        lottoView.mainMenuMsg();
         String userInput = br.readLine();
 
         if (userInput.equals("1")) {
@@ -66,29 +76,35 @@ public class UserInputRouter {
         throw new IllegalArgumentException("잘못된 입력을 하셨습니다. 입력값을 다시 한번 확인해 주세요");
     }
 
-    public void getUserLotto() throws IOException {
+
+    public TreeSet<Integer> getUserManualLotto() throws IOException, NumberFormatException {
         // 사용자 입력 받기
         System.out.println("공백을 기준으로 로또 번호 6개를 입력해 주세요 ! ");
         System.out.println("(예) 1 4 15 19 22 50 11");
 
-        String userInput = br.readLine();
-        String[] userInputs = userInput.split(" ");
-        //String[] userInputs = new String[] {"1", "3", "5", "7", "9", "11"};
-        int[] userLottos = new int[6];
+        //String userInput = br.readLine();
+        // String[] userInputs = userInput.split(" ");
+        String[] userInputs = new String[] {"1", "3", "5", "7", "9", "11"};
+        TreeSet<Integer> lottoSet = new TreeSet<>();
 
         for (int i = 0; i < userInputs.length; i++) {
-            userLottos[i] = Integer.parseInt(userInputs[i]);
+            lottoSet.add(getParseIntByUser(userInputs[i]));
         }
 
-        System.out.println("userlotto" + Arrays.toString(userLottos));
+        return lottoSet;
     }
 
+    // TODO: validation 분류
     public boolean isInteger(String s) {
         try {
-            Integer.parseInt(s);
+            getParseIntByUser(s);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private static int getParseIntByUser(String userInput) {
+        return Integer.parseInt(userInput);
     }
 }

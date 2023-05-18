@@ -1,35 +1,41 @@
 package service;
 import exception.IllegalMoneyException;
 import exception.LackOfMoneyException;
-import model.Lotto;
-import model.Player;
 import utils.UserInputRouter;
 import view.LottoView;
 
 import java.io.IOException;
+import java.util.TreeSet;
 
 public class LottoService {
     private UserInputRouter uir = new UserInputRouter();
     private LottoView lottoView = new LottoView();
-    private Player player = new Player();
 
-    public void run() throws LackOfMoneyException, IllegalMoneyException, IOException {
-        int userMoney = uir.getUserMoney();
+    // TODO : 같은 번호 뽑았을때 다시 뽑도록 처리해주기 ㅠ
+    /**
+     * 자동 로또 번호 생성
+     * @return
+     */
+    public TreeSet<Integer> doAutoLotto() {
+        TreeSet<Integer> lottoSet = new TreeSet<>();
+        for (int i = 0; i < 6; i++) {
+            int num = (int) ((Math.random() * 45) + 1);
+            lottoSet.add(num);
+        }
+        return lottoSet;
 
-        int totalLotto = getTotalLottoCount(userMoney);
-        int manualLotto = uir.getUserManualLottoCount();
-        int autoLotto = totalLotto - manualLotto;
-
-        System.out.println("totalLotto = " + totalLotto);
-        System.out.println("autoLotto = " + autoLotto);
-        System.out.println("manualLotto = " + manualLotto);
-
-
-        player.setMoney(userMoney);
     }
 
-    public int getTotalLottoCount(int money){
-        return money / 1000;
+    /**
+     * 수동 로또 번호 사용자에게 입력받아서 생성
+     * @return
+     * @throws IOException
+     */
+    public TreeSet<Integer> doManualLotto() throws IOException {
+        return uir.getUserManualLotto();
     }
 
+    public void doCheckLottoWinning (){
+
+    }
 }

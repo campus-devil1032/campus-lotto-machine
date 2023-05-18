@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.TreeSet;
+
 public class Player {
 
     private int money;
@@ -7,10 +10,17 @@ public class Player {
     private int manualLotto;
     private int autoLotto;
 
+    private ArrayList<TreeSet<Integer>> lottoSetList;
 
     public Player() {
     }
 
+    public Player(int money, int totalLotto, int manualLotto, int autoLotto) {
+        this.money = money;
+        this.totalLotto = totalLotto;
+        this.manualLotto = manualLotto;
+        this.autoLotto = autoLotto;
+    }
 
     public int getMoney() {
         return money;
@@ -42,5 +52,24 @@ public class Player {
 
     public void setAutoLotto(int autoLotto) {
         this.autoLotto = autoLotto;
+    }
+
+    public ArrayList<TreeSet<Integer>> getLottoSetList() {
+        return lottoSetList;
+    }
+
+    public void setLottoSetList(ArrayList<TreeSet<Integer>> lottoSetList) {
+        this.lottoSetList = lottoSetList;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+            "money=" + money +
+            ", totalLotto=" + totalLotto +
+            ", manualLotto=" + manualLotto +
+            ", autoLotto=" + autoLotto +
+            ", lottoSetList=" + lottoSetList +
+            '}';
     }
 }

@@ -3,7 +3,9 @@ package enums;
 public enum MainMenu {
     AUTO(1),
     MANUAL(2),
-    EXIT(3);
+    EXIT(3)
+
+    ;
 
     private final int value;
 
