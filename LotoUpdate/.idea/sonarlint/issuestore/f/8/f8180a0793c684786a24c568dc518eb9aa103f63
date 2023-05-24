@@ -1,0 +1,13 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úŠàòıÿÿÿÿ8É·î„1
+w
+java:S1450"ZRemove the "bonusNumber" field and declare it as a local variable in the relevant methods.(¹ÍíÁ8¾É·î„1
+|
+java:S1450"ZRemove the "inputAmount" field and declare it as a local variable in the relevant methods.(šßÈûÿÿÿÿ8¾É·î„1
+†
+java:S1450"dRemove the "numberOfLotteryTicket" field and declare it as a local variable in the relevant methods.(ˆÿ‹ëşÿÿÿÿ8¿É·î„1
+~
+java:S1450
+"\Remove the "winningNumber" field and declare it as a local variable in the relevant methods.(é‡şùÿÿÿÿÿ8¿É·î„1
+V
+java:S18544"9Remove this useless assignment to local variable "prize".(ÆßÆ‹8ĞÉ·î„1
