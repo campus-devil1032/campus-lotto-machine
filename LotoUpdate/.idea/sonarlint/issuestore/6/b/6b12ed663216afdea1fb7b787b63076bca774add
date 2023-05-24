@@ -1,0 +1,25 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úŠàòıÿÿÿÿ8®Ê·î„1
+|
+java:S1450"ZRemove the "inputAmount" field and declare it as a local variable in the relevant methods.(šßÈûÿÿÿÿ8¶Ê·î„1
+{
+java:S1450"^Remove the "inputGameNumber" field and declare it as a local variable in the relevant methods.(ÅË™÷8¶Ê·î„1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(¸Ê­ÿÿÿÿÿ8¿Ê·î„1
+U	java:S106"9Replace this use of System.out or System.err by a logger.(ÉÜö³8ÀÊ·î„1
+N
+java:S1135"2Complete the task associated to this TODO comment.(›ˆÜu8ÀÊ·î„1
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Òú×8ÁÊ·î„1
+T	java:S106"9Replace this use of System.out or System.err by a logger.(õİÅS8ÂÊ·î„1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(Œè¯óüÿÿÿÿ8ÂÊ·î„1
+]	java:S125"<This block of commented-out lines of code should be removed.(êË‡ıùÿÿÿÿ8ÃÊ·î„1
+Z	java:S106$"9Replace this use of System.out or System.err by a logger.(û£ ‡úÿÿÿÿ8ÆÊ·î„1
+O
+java:S1135#"2Complete the task associated to this TODO comment.(ñÃ8ÇÊ·î„1
+Z	java:S106)"9Replace this use of System.out or System.err by a logger.(Ñãæôùÿÿÿÿ8ÉÊ·î„1
+Z	java:S106*"9Replace this use of System.out or System.err by a logger.(Åó¹ıÿÿÿÿ8ÉÊ·î„1
+Z	java:S106+"9Replace this use of System.out or System.err by a logger.(Ì­ï‡ÿÿÿÿÿ8ÊÊ·î„1
+U	java:S106,"9Replace this use of System.out or System.err by a logger.(ËŞõŒ8ÊÊ·î„1
+T	java:S1060"9Replace this use of System.out or System.err by a logger.(Ñ›¾28ÌÊ·î„1
+U	java:S1061"9Replace this use of System.out or System.err by a logger.(ø•«Õ8ÍÊ·î„1
+Z	java:S1065"9Replace this use of System.out or System.err by a logger.(µŒïäøÿÿÿÿ8ÎÊ·î„1
+U	java:S1069"9Replace this use of System.out or System.err by a logger.(Æ†–Ï8ÏÊ·î„1
